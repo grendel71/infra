@@ -149,5 +149,11 @@
   enable = true;
   trustedInterfaces = [ "docker0" ];
   };
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "blau" = import ./home.nix;
+    };
+  };
 }
 
