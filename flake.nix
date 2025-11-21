@@ -14,14 +14,14 @@
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
-        ./pc
+        ./hosts/pc
       ];
     };
     nixosConfigurations.blau-laptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
-        ./laptop
+        ./hosts/laptop
         inputs.home-manager.nixosModules.default
       ];
     };
