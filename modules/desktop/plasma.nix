@@ -20,5 +20,6 @@
     kdePackages.qtstyleplugin-kvantum
     #kde-gruvbox
     polonium
+    kitty
 ];
 }

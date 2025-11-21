@@ -130,7 +130,7 @@
     wget
     gparted
     #(callPackage ./modules/tilp.nix   { })
-    
+    git
   ];
   services.usbmuxd.enable = true;
   services.tailscale.enable = true;
