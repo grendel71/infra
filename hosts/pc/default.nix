@@ -5,11 +5,17 @@ imports = [
   ./nvidia.nix
   ./nvidia-prime.nix
   ./smb.nix
-  ../../modules/programs/steam.nix
-  ../../system/wireguard.nix
+  ../../modules/programs/
+  ../../system/
   #../modules/
   ];
 
-networking.hostName = "blau-pc"; # Define your hostname.
+  networking.hostName = "blau-pc"; # Define your hostname.
 
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      "blau" = import ./home.nix;
+    };
+  };
 }
