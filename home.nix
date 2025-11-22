@@ -4,6 +4,7 @@
   imports = [
     ./modules/utilities
     ./modules/fonts
+    ./modules/desktop/sway-home.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

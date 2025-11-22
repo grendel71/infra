@@ -1,59 +1,86 @@
 { config, pkgs, lib, ... }:
 
+let
+  dbus-sway-environment = pkgs.writeTextFile {
+    name = "dbus-sway-environment";
+    destination = "/bin/dbus-sway-environment";
+    executable = true;
+    text = ''
+      systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP
+      dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+      systemctl --user daemon-reexec
+      systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+      systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
+    '';
+  };
+
+  configure-gtk = pkgs.writeTextFile {
+    name = "configure-gtk";
+    destination = "/bin/configure-gtk";
+    executable = true;
+    text =
+      let
+        schema = pkgs.gsettings-desktop-schemas;
+        datadir = "${schema}/share/gsettings-schemas/${schema.name}";
+      in
+      ''
+        export XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS
+        gnome_schema=org.gnome.desktop.interface
+        gsettings set $gnome_schema gtk-theme 'WhiteSur-dark'
+        gsettings set $gnome_schema cursor-theme 'capitaine-cursors-white'
+      '';
+  };
+
+in
 {
-  imports = [
-    #./theming-sway.nix
+  environment.systemPackages = with pkgs; [
+    alacritty
+    sway
+    dbus-sway-environment
+    configure-gtk
+    wayland
+    xdg-utils
+    glib
+    whitesur-icon-theme
+    grim
+    slurp
+    wl-clipboard
+    capitaine-cursors
+    waypaper
+    swaybg
+    kitty
   ];
-  wayland.windowManager.sway = {
+
+  services.dbus.enable = true;
+  services.gvfs.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.sway.enableGnomeKeyring = true;
+
+  
+
+  programs.thunar.enable = true;
+  programs.xfconf.enable = true;
+  programs.thunar.plugins = with pkgs.xfce; [
+    thunar-archive-plugin
+    thunar-volman
+
+  ];
+
+  xdg.portal = {
+    enable = true;
+    wlr = {
+      enable = true;
+      settings = {
+        screencast = {
+          chooser_type = "simple";
+          chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -ro";
+        };
+      };
+    };
+  };
+
+  programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
-    
-    systemdIntegration = true;
-
-
   };
-  #xdg.configFile."sway/config".source = lib.mkForce (config.lib.file.mkOutOfStoreSymlink ./config);
-
-  #xdg.configFile = {
-  #  "sway/config".source = lib.mkForce (config.lib.file.mkOutOfStoreSymlink ./config);
-  #  "waybar/config".source = lib.mkForce (config.lib.file.mkOutOfStoreSymlink ./waybar);
-  #};  
-
-  home.packages = with pkgs; [
-    grim
-    waybar
-  ];
-
-  home.file."${config.xdg.configHome}" = {
-  source = ../../dotfiles;
-  recursive = true;
-};
-
-  qt.enable = true;
-
-# platform theme "gtk" or "gnome"
-  qt.platformTheme = "gtk";
-
-# name of the qt theme
-  qt.style.name = "adwaita-dark";
-
-# detected automatically:
-# adwaita, adwaita-dark, adwaita-highcontrast,
-# adwaita-highcontrastinverse, breeze,
-# bb10bright, bb10dark, cde, cleanlooks,
-# gtk2, motif, plastique
-
-# package to use
-  qt.style.package = pkgs.adwaita-qt;
-  
-  gtk.enable = true;
-
-  #gtk.cursorTheme.package = pkgs.bibata-cursors;
-  #gtk.cursorTheme.name = "Bibata-Modern-Ice";
-
-  gtk.theme.package = pkgs.adw-gtk3;
-  gtk.theme.name = "adw-gtk3-dark";
-
-  gtk.iconTheme.package = pkgs.tango-icon-theme;
-  gtk.iconTheme.name = "Tango";
 }
