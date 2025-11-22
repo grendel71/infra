@@ -14,7 +14,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   #boot.kernelPackages = pkgs.linuxPackages_6_13;
-  networking.hostName = "blau-pc"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -149,6 +148,7 @@
   enable = true;
   trustedInterfaces = [ "docker0" ];
   };
+
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {

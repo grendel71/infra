@@ -1,4 +1,4 @@
-{ ... }:{  
+{ config, ... }:{  
 imports = [
   ./fs.nix
   ./hardware-configuration.nix
@@ -9,4 +9,7 @@ imports = [
   ../../system/wireguard.nix
   #../modules/
   ];
+
+networking.hostName = "blau-pc"; # Define your hostname.
+
 }
