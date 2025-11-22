@@ -2,8 +2,7 @@
 
 {
   imports = [
-    ../../modules/programs/
-    ../../modules/utilities/
+    ./modules/utilities
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

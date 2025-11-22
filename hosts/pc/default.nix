@@ -1,4 +1,4 @@
-{ config, ... }:{  
+{ config, inputs, ... }:{  
 imports = [
   ./fs.nix
   ./hardware-configuration.nix
