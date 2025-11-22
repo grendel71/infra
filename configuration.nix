@@ -150,6 +150,8 @@
   };
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
+    useGlobalPkgs = true;
+    useUserPackages = true;
     users = {
       "blau" = import ./home.nix;
     };

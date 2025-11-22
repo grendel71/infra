@@ -1,10 +1,9 @@
 { config, pkgs, inputs, ... }:
 
 {
-  fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-    discord
+    #discord
     #shotwell
     screenfetch
     firefox
@@ -16,7 +15,7 @@
 
     thunderbird
     libreoffice-qt
-    bitwarden
+    bitwarden-desktop
     mpv
     nomacs
     keepassxc
@@ -36,10 +35,7 @@
     calibre
 
     ##fonts
-    vistafonts
-    corefonts
-    font-awesome
-    uget
+    
 
     #xournalpp
 
