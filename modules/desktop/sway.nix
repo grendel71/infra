@@ -49,6 +49,7 @@ in
     waypaper
     swaybg
     kitty
+    wofi
   ];
 
   services.dbus.enable = true;
