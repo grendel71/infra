@@ -27,7 +27,7 @@
     #xfce.thunar
     #dolphin
     qalculate-qt
-    gimp
+    #gimp
     kitty
     pavucontrol
 
