@@ -7,6 +7,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    polymc.url = "github:PolyMC/PolyMC";
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {

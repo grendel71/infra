@@ -11,11 +11,4 @@ imports = [
   ];
 
   networking.hostName = "blau-pc"; # Define your hostname.
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "blau" = import ./home.nix;
-    };
-  };
 }
