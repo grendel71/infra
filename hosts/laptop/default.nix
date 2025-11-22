@@ -1,7 +1,8 @@
 { config, inputs, ... }:{  
 imports = [
   ./hardware-configuration.nix
-  ../../modules/desktop/plasma.nix
+  #../../modules/desktop/plasma.nix
+  ../../modules/desktop/sway.nix
   ../../modules/programs
   #../modules/
   ];

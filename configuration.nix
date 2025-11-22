@@ -3,7 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, inputs, ... }:
-
+let
+    secretspath = builtins.toString inputs.nix-secrets;
+in
 {
 
 
@@ -81,10 +83,13 @@
     isNormalUser = true;
     description = "blau";
     extraGroups = [ "networkmanager" "wheel" "docker"];
+    #hashedPasswordFile = config.sops.secrets.dade_passwd.path;
     packages = with pkgs; [
     #  thunderbird
     ];
   };
+
+
 
   # Install firefox.
   programs.firefox.enable = true;

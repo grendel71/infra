@@ -8,6 +8,7 @@ imports = [
   ../../modules/programs
   ../../modules/desktop/plasma.nix
   ../../modules/system
+  ../../modules/qemu
   #../modules/
   ];
 

@@ -63,6 +63,7 @@
     shellAliases = {
       please = "sudo";
       mail = "notmuch new; neomutt";
+      rebuild = "sudo nixos-rebuild switch --flake $HOME/infra/";
     };
   };
 
