@@ -5,8 +5,9 @@ imports = [
   ./nvidia.nix
   ./nvidia-prime.nix
   ./smb.nix
-  ../../modules/programs/
-  ../../system/
+  ../../modules/programs
+  ../../modules/desktop/plasma.nix
+  ../../modules/system
   #../modules/
   ];
 

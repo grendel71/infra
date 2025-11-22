@@ -16,6 +16,7 @@
       modules = [
         ./configuration.nix
         ./hosts/pc
+        inputs.home-manager.nixosModules.default
       ];
     };
     nixosConfigurations.blau-laptop = nixpkgs.lib.nixosSystem {

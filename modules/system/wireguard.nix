@@ -5,5 +5,5 @@
     wireguard-tools
   ];
 
-  networking.wg-quick.interfaces.wg0.configFile = "/etc/nixos/files/wireguard/wg0-client-blaupc.conf";
+  networking.wg-quick.interfaces.wg0.configFile = "/home/blau/dotfiles/wg/wg.conf";
 }
