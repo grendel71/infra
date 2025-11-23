@@ -50,6 +50,7 @@ in
     swaybg
     kitty
     wofi
+    pcmanfm
   ];
 
   services.dbus.enable = true;
@@ -59,13 +60,8 @@ in
 
   
 
-  programs.thunar.enable = true;
   programs.xfconf.enable = true;
-  programs.thunar.plugins = with pkgs.xfce; [
-    thunar-archive-plugin
-    thunar-volman
 
-  ];
 
   xdg.portal = {
     enable = true;

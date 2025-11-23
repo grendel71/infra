@@ -6,7 +6,8 @@ imports = [
   ./nvidia-prime.nix
   ./smb.nix
   ../../modules/programs
-  ../../modules/desktop/plasma.nix
+  #../../modules/desktop/plasma.nix
+  ../../modules/desktop/sway.nix
   ../../modules/system
   ../../modules/qemu
   #../modules/
