@@ -24,6 +24,8 @@ in
 
   # Enable networking
   networking.networkmanager.enable = true;
+  programs.nm-applet.enable = true;
+
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -135,6 +137,7 @@ in
     gparted
     #(callPackage ./modules/tilp.nix   { })
     git
+    networkmanagerapplet
   ];
   services.usbmuxd.enable = true;
   services.tailscale.enable = true;

@@ -9,7 +9,7 @@ exec systemctl --user import-environment XDG_SESSION_TYPE XDG_CURRENT_DESKTOP
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 exec nextcloud
-
+exec nm-applet
 ## tablet
 input type:tablet_tool map_to_output DP-8
 ### Variables
