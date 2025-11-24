@@ -23,9 +23,14 @@
     grim
     waybar
   ];
-
-  home.file."${config.xdg.configHome}" = {
-  source = ../../dotfiles;
+  # sway
+  home.file."${config.xdg.configHome}/sway" = {
+  source = ../../dotfiles/sway;
+  recursive = true;
+};
+  #waybar
+  home.file."${config.xdg.configHome}/waybar" = {
+  source = ../../dotfiles/waybar;
   recursive = true;
 };
 

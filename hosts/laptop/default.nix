@@ -8,6 +8,6 @@ imports = [
   ];
 
   networking.hostName = "blau-laptop"; # Define your hostname.
-
+  services.tailscale.enable = true;
 
 }

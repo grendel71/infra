@@ -30,7 +30,7 @@ set $filemanager pcmanfm
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
-output * bg ./10-13.jpg fill
+output * bg ./fruitger.jpg fill
 #
 # Example configuration:
 #

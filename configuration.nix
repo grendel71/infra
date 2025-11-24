@@ -140,7 +140,7 @@ in
     networkmanagerapplet
   ];
   services.usbmuxd.enable = true;
-  services.tailscale.enable = true;
+  #services.tailscale.enable = true;
 
   ## java
   programs.java = {
