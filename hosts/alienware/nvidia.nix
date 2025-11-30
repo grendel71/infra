@@ -45,11 +45,12 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
-  #hardware.nvidia.prime = {
-	#	# Make sure to use the correct Bus ID values for your system!
-  #  sync.enable = true;
-	#	amdgpuBusId = "PCI:11:0:0";
-	#	nvidiaBusId = "PCI:1:0:0";
+  hardware.nvidia.prime = {
+		# Make sure to use the correct Bus ID values for your system!
+    sync.enable = true;
+		intelBusId = "PCI:0:02:0";
+		nvidiaBusId = "PCI:1:0:0";
   #              # amdgpuBusId = "PCI:54:0:0"; For AMD GPU
 
+};
 }

@@ -3,7 +3,7 @@
 {
 
   home.packages = with pkgs; [
-    #discord
+    discord
     #shotwell
     screenfetch
     firefox
@@ -19,7 +19,7 @@
     mpv
     nomacs
     keepassxc
-    vscodium
+    #vscodium
     #alacritty
     #waybar
     #wofi

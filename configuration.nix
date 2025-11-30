@@ -26,7 +26,7 @@ in
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
 
-
+  
   # Set your time zone.
   time.timeZone = "America/New_York";
 
@@ -155,14 +155,6 @@ in
   networking.firewall = {
   enable = true;
   trustedInterfaces = [ "docker0" ];
-  };
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users = {
-      "blau" = import ./home.nix;
-    };
   };
 }
 

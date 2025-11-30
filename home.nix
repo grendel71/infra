@@ -65,6 +65,7 @@
       please = "sudo";
       mail = "notmuch new; neomutt";
       rebuild = "sudo nixos-rebuild switch --flake $HOME/infra/";
+      nsway = "sway --unsupported-gpu";
     };
   };
 
@@ -81,6 +82,14 @@
       init.defaultBranch = "main";
 
     };
+  };
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscodium;
+    profiles.default.extensions = with pkgs.vscode-extensions; [
+      bbenoist.nix
+      ms-python.python
+    ];
   };
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
