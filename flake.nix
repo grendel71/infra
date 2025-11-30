@@ -18,7 +18,7 @@
     nixosConfigurations.blau-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration.nix
+        #./configuration.nix
         ./hosts/pc
         inputs.home-manager.nixosModules.default
         sops-nix.nixosModules.sops
@@ -27,8 +27,17 @@
     nixosConfigurations.blau-laptop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration.nix
+        #./configuration.nix
         ./hosts/laptop
+        inputs.home-manager.nixosModules.default
+        sops-nix.nixosModules.sops
+      ];
+    };
+    nixosConfigurations.blau-alienware = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        #./configuration.nix
+        ./hosts/alienware
         inputs.home-manager.nixosModules.default
         sops-nix.nixosModules.sops
       ];

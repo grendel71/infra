@@ -1,4 +1,4 @@
-{ config, inputs, ... }:{  
+{ config, pkgs, inputs, ... }:{  
 imports = [
   ./fs.nix
   ./hardware-configuration.nix
@@ -11,7 +11,17 @@ imports = [
   ../../modules/system
   ../../modules/qemu
   #../modules/
+  ../../configuration.nix
   ];
 
   networking.hostName = "blau-pc"; # Define your hostname.
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users = {
+      "blau" = import ./home.nix;
+    };
+  };
 }
