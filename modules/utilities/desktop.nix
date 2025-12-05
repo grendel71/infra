@@ -8,11 +8,11 @@
     screenfetch
     firefox
     htop
-    
+    fuzzel   
     obsidian
     nextcloud-client
     vscodium
-
+    waybar
     thunderbird
     libreoffice-qt
     bitwarden-desktop
@@ -49,6 +49,7 @@
 
     # education
     # rstudio
+    pandoc
     
     ];
 }

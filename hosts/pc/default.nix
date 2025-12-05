@@ -7,7 +7,8 @@ imports = [
   ./smb.nix
   ../../modules/programs
   #../../modules/desktop/plasma.nix
-  ../../modules/desktop/sway.nix
+  #../../modules/desktop/sway.nix
+  ../../modules/desktop/niri.nix
   ../../modules/system
   ../../modules/qemu
   #../modules/

@@ -50,7 +50,8 @@ in
     swaybg
     kitty
     wofi
-    pcmanfm
+    #pcmanfm
+    kdePackages.dolphin
   ];
 
   services.dbus.enable = true;

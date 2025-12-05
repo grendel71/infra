@@ -156,5 +156,9 @@ in
   enable = true;
   trustedInterfaces = [ "docker0" ];
   };
+
+  hardware.bluetooth.enable = true;
+
+  services.blueman.enable = true;
 }
 
