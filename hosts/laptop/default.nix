@@ -5,7 +5,7 @@ imports = [
   #./nvidia.nix
   #./nvidia-prime.nix
   #./smb.nix
-  ../../modules/programs
+  ../../modules/programs/r.nix
   #../../modules/desktop/plasma.nix
   #../../modules/desktop/sway.nix
   ../../modules/desktop/niri.nix
@@ -13,6 +13,7 @@ imports = [
   #../../modules/qemu
   #../modules/
   ../../configuration.nix
+  ./powermgmt.nix
   ];
 
   networking.hostName = "blau-laptop"; # Define your hostname.
