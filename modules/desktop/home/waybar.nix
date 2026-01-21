@@ -2,5 +2,5 @@
 
 {
   programs.waybar.enable = true;
-  home.file.".config/niri".source = config.lib.file.mkOutOfStoreSymlink "/home/blau/dotfiles/waybar";
+  home.file.".config/waybar".source = config.lib.file.mkOutOfStoreSymlink "/home/blau/dotfiles/waybar";
 }

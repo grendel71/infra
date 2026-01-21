@@ -1,12 +1,11 @@
 { config, pkgs, ... }:
-
 {
   programs.niri.enable = true;
   environment.systemPackages = with pkgs; [
 	  xwayland-satellite
     #alacritty
     #sway
-    #dbus-sway-environment
+    #dbus-niri-environment
     #configure-gtk
     wayland
     xdg-utils
@@ -20,20 +19,15 @@
     swaybg
     kitty
     wofi
-    #pcmanfm
-    kdePackages.dolphin
+    pcmanfm
+    #kdePackages.dolphin
   ];
 
-  xdg.portal = {
-    enable = true;
-    wlr = {
-      enable = true;
-      settings = {
-        screencast = {
-          chooser_type = "simple";
-          chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -ro";
-        };
-      };
-    };
-  };
+  services.dbus.enable = true;
+  services.gvfs.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.sway.enableGnomeKeyring = true;
+  
+
+  programs.xfconf.enable = true;
 }

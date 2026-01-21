@@ -37,4 +37,5 @@
 
   gtk.iconTheme.package = pkgs.tango-icon-theme;
   gtk.iconTheme.name = "Tango";
+
 }

@@ -89,12 +89,13 @@ in
     packages = with pkgs; [
     #  thunderbird
     ];
+    #shell = pkgs.fish;
   };
-
+  #programs.fish.enable = true;
 
 
   # Install firefox.
-  programs.firefox.enable = true;
+  #programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -129,7 +130,7 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
   environment.systemPackages = with pkgs; [
     screen
     vim
@@ -140,7 +141,7 @@ in
     networkmanagerapplet
   ];
   services.usbmuxd.enable = true;
-  #services.tailscale.enable = true;
+  services.tailscale.enable = true;
 
   ## java
   programs.java = {
@@ -160,5 +161,6 @@ in
   hardware.bluetooth.enable = true;
 
   services.blueman.enable = true;
+
 }
 

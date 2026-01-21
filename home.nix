@@ -1,17 +1,18 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
     ./modules/utilities
     ./modules/fonts
     ./modules/desktop/home
+    inputs.zen-browser.homeModules.beta
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "blau";
   home.homeDirectory = "/home/blau";
-
+  programs.zen-browser.enable = true;
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -42,17 +43,78 @@
     # '')
       
   ];
+
   programs.starship = {
     enable = true;
-    # custom settings
+    enableFishIntegration = true;
     settings = {
-      add_newline = false;
+      add_newline = true;
+      scan_timeout = 5;
+      command_timeout = 500;
+
+      format = ''
+        [┌───](bold bright-blue) $hostname $os
+        [│](bold bright-blue) $directory$git_branch$git_status$nix_shell
+        [└─>](bold bright-blue) $character
+      '';
+
+      os = {
+        format = "on [($name $codename$version $symbol )]($style)";
+        style = "bold bright-blue";
+        disabled = false;
+      };
+
+      hostname = {
+        ssh_only = false;
+        format = "[$hostname]($style)";
+        style = "bold bright-red";
+        disabled = false;
+      };
+
+      character = {
+        format = "$symbol";
+        success_symbol = "[❯](bold bright-green) ";
+        error_symbol = "[✗](bold bright-red) ";
+        vicmd_symbol = "[](bold yellow) ";
+        disabled = false;
+      };
+
+      nix_shell = {
+        disabled = false;
+        heuristic = false;
+        format = "[   ](fg:bright-blue bold)";
+        impure_msg = "";
+        pure_msg = "";
+        unknown_msg = "";
+      };
+
       aws.disabled = true;
       gcloud.disabled = true;
-      line_break.disabled = true;
+      nodejs.disabled = true;
+      ruby.disabled = true;
+      python.disabled = true;
+      rust.disabled = true;
+      golang.disabled = true;
+      java.disabled = true;
+      kotlin.disabled = true;
+      lua.disabled = true;
+      perl.disabled = true;
+      php.disabled = true;
+      swift.disabled = true;
+      terraform.disabled = true;
+      zig.disabled = true;
+      package.disabled = true;
+      conda.disabled = true;
+      docker_context.disabled = true;
+      kubernetes.disabled = true;
+      helm.disabled = true;
+      battery.disabled = true;
+      time.disabled = true;
+      cmd_duration.disabled = true;
     };
   };
 
+  programs.fish.enable = true;
   programs.bash = {
     enable = true;
     enableCompletion = true;
@@ -66,6 +128,8 @@
       mail = "notmuch new; neomutt";
       rebuild = "sudo nixos-rebuild switch --flake $HOME/infra/";
       nsway = "sway --unsupported-gpu";
+      osync = "nix develop $HOME/syncVault/ --command bash -c 'cd /home/blau/syncVault && python /home/blau/syncVault/sync.py'";
+      ns = "niri-session";
     };
   };
 
@@ -77,6 +141,7 @@
       ci = "commit";
       co = "checkout";
       s = "status";
+      pu = "push";
     };
     extraConfig = {
       init.defaultBranch = "main";
@@ -134,7 +199,7 @@
 defaultApplications = {
   "application/gzip" = "com.github.xournalpp.xournalpp.desktop";
   "application/pdf" = [
-    "firefox.desktop"
+    "zen-beta.desktop"
   ];
   "application/x-matroska" = "mpv.desktop";
   "audio/aac" = "mpv.desktop";
@@ -198,6 +263,11 @@ defaultApplications = {
 
   "x-scheme-handler/mailto" = "userapp-Thunderbird-I99ND3.desktop";
   "x-scheme-handler/mid" = "userapp-Thunderbird-I99ND3.desktop";
+  "text/html" = "zen-beta.desktop"; # Or 'chromium.desktop', 'qutebrowser.desktop' etc.
+  "x-scheme-handler/http" = "zen-beta.desktop";
+  "x-scheme-handler/https" = "zen-beta.desktop";
+  "x-scheme-handler/about" = "zen-beta.desktop";
+  "x-scheme-handler/unknown" = "zen-beta.desktop";
 };
   };
 }

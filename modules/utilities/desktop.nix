@@ -1,7 +1,6 @@
 { config, pkgs, inputs, ... }:
 
 {
-
   home.packages = with pkgs; [
     discord
     #shotwell
@@ -35,7 +34,7 @@
     calibre
 
     ##fonts
-    
+    octave
 
     #xournalpp
 

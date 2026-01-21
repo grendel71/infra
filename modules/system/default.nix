@@ -1,6 +1,6 @@
 { ... }:{  
 imports = [
-  ./wireguard.nix
+  #./wireguard.nix
   #./sops.nix
 ];
 
