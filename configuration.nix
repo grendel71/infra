@@ -150,7 +150,7 @@ in
   ##docker 
 
   virtualisation.docker = {
-  enable = true;
+    enable = true;
   };
   
   networking.firewall = {

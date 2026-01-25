@@ -157,14 +157,16 @@
     ];
   };
 
-  services.redshift = {
+  services.gammastep = {
     enable = true;
     temperature = {
       day = 5500;
-      night = 3700;
-      latitude = "40.73";
-      longitude = "74.03";
+      night = 2600;
     };
+      latitude = "40.73";
+      longitude = "-74.03";
+      provider = "manual";
+
   };
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
