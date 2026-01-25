@@ -32,4 +32,10 @@ imports = [
   #loadModels = [ "llama3.2:3b" "deepseek-r1:1.5b"];
   acceleration = "cuda";
 };
+  services.openssh.enable = true;
+  users.users.blau = {
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH+gzK8xwCY7/YsF1TeJjMrjwCjNjzRUTHB5ILNIqCL1 blau@blau-laptop"
+    ];
+  };
 }
