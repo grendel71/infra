@@ -46,7 +46,7 @@
     gawk
     zstd
     gnupg
-
+    tmux
     # nix related
     #
     # it provides the command `nom` works just like `nix`
