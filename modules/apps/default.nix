@@ -4,6 +4,9 @@
 {
   imports = [
   ./desktop.nix
+  ./vscode.nix
+  ./occaml.nix
+  ./java.nix
   ];
 
   home.packages = with pkgs; [
@@ -76,6 +79,6 @@
     sops
     direnv
     seaweedfs
-    ocaml
+    
   ];
 }

@@ -143,12 +143,6 @@ in
   services.usbmuxd.enable = true;
   services.tailscale.enable = true;
 
-  ## java
-  programs.java = {
-    enable = true;
-  };
-  ##docker 
-
   virtualisation.docker = {
     enable = true;
   };
