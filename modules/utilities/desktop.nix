@@ -46,7 +46,7 @@
     #mail
     #neomutt
 
-
+    gimp
     # education
     # rstudio
     pandoc

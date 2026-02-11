@@ -75,5 +75,7 @@
     age
     sops
     direnv
+    seaweedfs
+    ocaml
   ];
 }
