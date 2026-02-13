@@ -8,6 +8,7 @@
     screenfetch
     firefox
     htop
+    jetbrains.idea
     fuzzel   
     obsidian
     nextcloud-client
