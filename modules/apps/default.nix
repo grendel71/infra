@@ -79,6 +79,10 @@
     sops
     direnv
     seaweedfs
+
+    claude-code
+    nodejs_22                                                                                                                                                                                                  
+    ripgrep
     
   ];
 }

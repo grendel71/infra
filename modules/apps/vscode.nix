@@ -10,7 +10,7 @@
       ms-kubernetes-tools.vscode-kubernetes-tools
       vscjava.vscode-java-pack
       james-yu.latex-workshop
-
+      anthropic.claude-code
       
     ];
   };
