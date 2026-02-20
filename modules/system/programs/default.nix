@@ -1,7 +1,7 @@
 { ... }:{  
 imports = [
   ./r.nix
-  ./steam.nix
+  #./steam.nix
   
 ];
 
