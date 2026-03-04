@@ -3,9 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, inputs, ... }:
-let
-    secretspath = builtins.toString inputs.nix-secrets;
-in
 {
 
 
@@ -141,7 +138,7 @@ in
     networkmanagerapplet
   ];
   services.usbmuxd.enable = true;
-  services.tailscale.enable = true;
+
 
   virtualisation.docker = {
     enable = true;
@@ -155,6 +152,14 @@ in
   hardware.bluetooth.enable = true;
 
   services.blueman.enable = true;
-
+  sops.age.keyFile = "/home/blau/infra/age.agekey";
+  sops.secrets.tailscale = {
+    sopsFile = ./secrets/secret.yaml;
+    path = "/run/secrets/tailscale.key";
+  };
+  services.tailscale = {
+    enable = true; 
+    authKeyFile = "/run/secrets/tailscale.key";
+  };
 }
 
