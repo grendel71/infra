@@ -9,7 +9,7 @@
     #waybar
   ];
   #niri
-  home.file.".config/niri".source = config.lib.file.mkOutOfStoreSymlink "/home/blau/dotfiles/niri";
+  home.file.".config/niri".source = config.lib.file.mkOutOfStoreSymlink "/home/blau/infra/dotfiles/niri";
   qt.enable = true;
 
 # platform theme "gtk" or "gnome"

@@ -4,6 +4,7 @@
   imports = [
     ./modules
     inputs.zen-browser.homeModules.beta
+    inputs.sops-nix.homeManagerModules.sops
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
