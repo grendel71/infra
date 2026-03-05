@@ -83,6 +83,6 @@
     claude-code
     nodejs_22                                                                                                                                                                                                  
     ripgrep
-    
+    neomutt
   ];
 }
