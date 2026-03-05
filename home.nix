@@ -200,78 +200,83 @@
 
   xdg.mimeApps ={
     enable = true;
-defaultApplications = {
-  "application/gzip" = "com.github.xournalpp.xournalpp.desktop";
-  "application/pdf" = [
-    "zen-beta.desktop"
-  ];
-  "application/x-matroska" = "mpv.desktop";
-  "audio/aac" = "mpv.desktop";
-  "audio/mp4" = "mpv.desktop";
-  "audio/mpeg" = "mpv.desktop";
-  "audio/mpegurl" = "mpv.desktop";
-  "audio/ogg" = "mpv.desktop";
-  "audio/vnd.rn-realaudio" = "mpv.desktop";
-  "audio/vorbis" = "mpv.desktop";
-  "audio/x-flac" = "mpv.desktop";
-  "audio/x-mp3" = "mpv.desktop";
-  "audio/x-mpegurl" = "mpv.desktop";
-  "audio/x-ms-wma" = "mpv.desktop";
-  "audio/x-musepack" = "mpv.desktop";
-  "audio/x-oggflac" = "mpv.desktop";
-  "audio/x-pn-realaudio" = "mpv.desktop";
-  "audio/x-scpls" = "mpv.desktop";
-  "audio/x-vorbis" = "mpv.desktop";
-  "audio/x-vorbis+ogg" = "mpv.desktop";
-  "audio/x-wav" = "mpv.desktop";
+    defaultApplications = {
+      "application/gzip" = "com.github.xournalpp.xournalpp.desktop";
+      "application/pdf" = [
+        "zen-beta.desktop"
+      ];
+      "application/x-matroska" = "mpv.desktop";
+      "audio/aac" = "mpv.desktop";
+      "audio/mp4" = "mpv.desktop";
+      "audio/mpeg" = "mpv.desktop";
+      "audio/mpegurl" = "mpv.desktop";
+      "audio/ogg" = "mpv.desktop";
+      "audio/vnd.rn-realaudio" = "mpv.desktop";
+      "audio/vorbis" = "mpv.desktop";
+      "audio/x-flac" = "mpv.desktop";
+      "audio/x-mp3" = "mpv.desktop";
+      "audio/x-mpegurl" = "mpv.desktop";
+      "audio/x-ms-wma" = "mpv.desktop";
+      "audio/x-musepack" = "mpv.desktop";
+      "audio/x-oggflac" = "mpv.desktop";
+      "audio/x-pn-realaudio" = "mpv.desktop";
+      "audio/x-scpls" = "mpv.desktop";
+      "audio/x-vorbis" = "mpv.desktop";
+      "audio/x-vorbis+ogg" = "mpv.desktop";
+      "audio/x-wav" = "mpv.desktop";
 
-  "image/jpeg" = [
-    "org.nomacs.ImageLounge.desktop"
-    "org.gnome.Shotwell-Viewer.desktop"
-  ];
-  "image/png" = "org.nomacs.ImageLounge.desktop";
-  "inode/directory" = "pcmanfm.desktop";
-  "text/plain" = "codium.desktop";
-  "video/3gp" = "mpv.desktop";
-  "video/3gpp" = "mpv.desktop";
-  "video/3gpp2" = "mpv.desktop";
-  "video/avi" = "mpv.desktop";
-  "video/divx" = "mpv.desktop";
-  "video/dv" = "mpv.desktop";
-  "video/fli" = "mpv.desktop";
-  "video/flv" = "mpv.desktop";
-  "video/mp2t" = "mpv.desktop";
-  "video/mp4" = "mpv.desktop";
-  "video/mp4v-es" = "mpv.desktop";
-  "video/mpeg" = "mpv.desktop";
-  "video/msvideo" = "mpv.desktop";
-  "video/ogg" = "mpv.desktop";
-  "video/quicktime" = "mpv.desktop";
-  "video/vnd.divx" = "mpv.desktop";
-  "video/vnd.mpegurl" = "mpv.desktop";
-  "video/vnd.rn-realvideo" = "mpv.desktop";
-  "video/webm" = "mpv.desktop";
-  "video/x-avi" = "mpv.desktop";
-  "video/x-flv" = "mpv.desktop";
-  "video/x-m4v" = "mpv.desktop";
-  "video/x-matroska" = "mpv.desktop";
-  "video/x-mpeg2" = "mpv.desktop";
-  "video/x-ms-asf" = "mpv.desktop";
-  "video/x-ms-wmv" = "mpv.desktop";
-  "video/x-ms-wmx" = "mpv.desktop";
-  "video/x-msvideo" = "mpv.desktop";
-  "video/x-ogm" = "mpv.desktop";
-  "video/x-ogm+ogg" = "mpv.desktop";
-  "video/x-theora" = "mpv.desktop";
-  "video/x-theora+ogg" = "mpv.desktop";
+      "image/jpeg" = [
+        "org.nomacs.ImageLounge.desktop"
+        "org.gnome.Shotwell-Viewer.desktop"
+      ];
+      "image/png" = "org.nomacs.ImageLounge.desktop";
+      "inode/directory" = "pcmanfm.desktop";
+      "text/plain" = "codium.desktop";
+      "video/3gp" = "mpv.desktop";
+      "video/3gpp" = "mpv.desktop";
+      "video/3gpp2" = "mpv.desktop";
+      "video/avi" = "mpv.desktop";
+      "video/divx" = "mpv.desktop";
+      "video/dv" = "mpv.desktop";
+      "video/fli" = "mpv.desktop";
+      "video/flv" = "mpv.desktop";
+      "video/mp2t" = "mpv.desktop";
+      "video/mp4" = "mpv.desktop";
+      "video/mp4v-es" = "mpv.desktop";
+      "video/mpeg" = "mpv.desktop";
+      "video/msvideo" = "mpv.desktop";
+      "video/ogg" = "mpv.desktop";
+      "video/quicktime" = "mpv.desktop";
+      "video/vnd.divx" = "mpv.desktop";
+      "video/vnd.mpegurl" = "mpv.desktop";
+      "video/vnd.rn-realvideo" = "mpv.desktop";
+      "video/webm" = "mpv.desktop";
+      "video/x-avi" = "mpv.desktop";
+      "video/x-flv" = "mpv.desktop";
+      "video/x-m4v" = "mpv.desktop";
+      "video/x-matroska" = "mpv.desktop";
+      "video/x-mpeg2" = "mpv.desktop";
+      "video/x-ms-asf" = "mpv.desktop";
+      "video/x-ms-wmv" = "mpv.desktop";
+      "video/x-ms-wmx" = "mpv.desktop";
+      "video/x-msvideo" = "mpv.desktop";
+      "video/x-ogm" = "mpv.desktop";
+      "video/x-ogm+ogg" = "mpv.desktop";
+      "video/x-theora" = "mpv.desktop";
+      "video/x-theora+ogg" = "mpv.desktop";
 
-  "x-scheme-handler/mailto" = "userapp-Thunderbird-I99ND3.desktop";
-  "x-scheme-handler/mid" = "userapp-Thunderbird-I99ND3.desktop";
-  "text/html" = "zen-beta.desktop"; # Or 'chromium.desktop', 'qutebrowser.desktop' etc.
-  "x-scheme-handler/http" = "zen-beta.desktop";
-  "x-scheme-handler/https" = "zen-beta.desktop";
-  "x-scheme-handler/about" = "zen-beta.desktop";
-  "x-scheme-handler/unknown" = "zen-beta.desktop";
-};
+      "x-scheme-handler/mailto" = "userapp-Thunderbird-I99ND3.desktop";
+      "x-scheme-handler/mid" = "userapp-Thunderbird-I99ND3.desktop";
+      "text/html" = "zen-beta.desktop"; # Or 'chromium.desktop', 'qutebrowser.desktop' etc.
+      "x-scheme-handler/http" = "zen-beta.desktop";
+      "x-scheme-handler/https" = "zen-beta.desktop";
+      "x-scheme-handler/about" = "zen-beta.desktop";
+      "x-scheme-handler/unknown" = "zen-beta.desktop";
+    };
+  };
+  sops = {
+      age.keyFile = "/home/blau/infra/age.agekey";
+      defaultSymlinkPath = "/run/user/1000/secrets";
+      defaultSecretsMountPoint = "/run/user/1000/secrets.d";
   };
 }

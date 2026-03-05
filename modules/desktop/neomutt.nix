@@ -1,5 +1,9 @@
 { config, pkgs, lib, ... }:
 
 {
-  home.file.".config/.muttrc".source = config.lib.file.mkOutOfStoreSymlink "/home/blau/infra/dotfiles/neomutt/config";
+  home.file.".neomutt/".source = config.lib.file.mkOutOfStoreSymlink "/home/blau/infra/dotfiles/neomutt/";
+
+  sops.secrets.neomutt = {
+    sopsFile = ../../secrets/neomutt.yaml;
+  };
 }
