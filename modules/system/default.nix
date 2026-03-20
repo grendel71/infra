@@ -4,6 +4,8 @@ imports = [
   #./sops.nix
   ./programs
   ./niri.nix
+  ./sops.nix
+  ./networking.nix
 ];
 
 }

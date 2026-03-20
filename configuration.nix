@@ -78,11 +78,11 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+
   users.users.blau = {
     isNormalUser = true;
     description = "blau";
     extraGroups = [ "networkmanager" "wheel" "docker"];
-    #hashedPasswordFile = config.sops.secrets.dade_passwd.path;
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -152,14 +152,6 @@
   hardware.bluetooth.enable = true;
 
   services.blueman.enable = true;
-  sops.age.keyFile = "/home/blau/infra/age.agekey";
-  sops.secrets.tailscale = {
-    sopsFile = ./secrets/secret.yaml;
-    path = "/run/secrets/tailscale.key";
-  };
-  services.tailscale = {
-    enable = true; 
-    authKeyFile = "/run/secrets/tailscale.key";
-  };
+
 }
 
