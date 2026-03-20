@@ -7,6 +7,7 @@
   home.packages = with pkgs; [
     #grim
     #waybar
+	gpaste
   ];
   #niri
   home.file.".config/niri".source = config.lib.file.mkOutOfStoreSymlink "/home/blau/infra/dotfiles/niri";

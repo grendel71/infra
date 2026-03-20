@@ -51,6 +51,7 @@
     # education
     # rstudio
     pandoc
+    kdePackages.kdenlive
     
     ];
 }

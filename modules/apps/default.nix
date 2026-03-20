@@ -7,6 +7,7 @@
   ./vscode.nix
   ./occaml.nix
   ./java.nix
+  ./aws.nix
   ];
 
   home.packages = with pkgs; [
