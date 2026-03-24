@@ -25,9 +25,14 @@
       url = "github:grendel71/dotfiles";
       flake = false;
     };
+
+    antigravity-nix = {
+      url = "github:jacopone/antigravity-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, sops-nix, ... }@inputs: {
+  outputs = { self, nixpkgs, sops-nix, antigravity-nix, ... }@inputs: {
     nixosConfigurations.blau-pc = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [

@@ -9,10 +9,9 @@
     firefox
     htop
     jetbrains.idea
-    fuzzel   
+    fuzzel
     obsidian
     nextcloud-client
-    vscodium
     waybar
     thunderbird
     libreoffice-qt
@@ -24,7 +23,7 @@
     #alacritty
     #waybar
     #wofi
-        
+
     #xfce.thunar
     #dolphin
     qalculate-qt
@@ -42,7 +41,7 @@
 
     saber
     #zenity dependency of saber for export pdf
-    zenity 
+    zenity
     handbrake
     #mail
     #neomutt
@@ -51,7 +50,6 @@
     # education
     # rstudio
     pandoc
-    kdePackages.kdenlive
-    
+    zed-editor
     ];
 }

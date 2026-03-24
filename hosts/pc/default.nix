@@ -17,6 +17,8 @@ imports = [
 
   networking.hostName = "blau-pc"; # Define your hostname.
 
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
