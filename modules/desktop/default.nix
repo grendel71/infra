@@ -4,6 +4,7 @@ imports = [
   ./waybar.nix
   ./neomutt.nix
   ./mail.nix
+  ./kanshi.nix
 ];
 
 }

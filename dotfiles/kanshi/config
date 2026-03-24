@@ -1,0 +1,31 @@
+output "Dell Inc. DELL S2715H V14F36CNAVJL" {
+  mode 1920x1080@60.0
+  position 0,0
+  scale 1
+  alias $HOME_1
+}
+
+output "LG Electronics LG FULL HD 0x01010101" {
+  mode 1920x1080@60.0
+  position -1920,0
+  scale 1
+  alias $INTERNAL
+}
+
+
+output "AU Optronics 0x3CAD Unknown" {
+    mode 1920x1200@60.0
+    position 0,0
+    scale 1.5 
+    alias $LAPTOP_SCREEN
+}
+
+profile home_1 {
+  output $INTERNAL enable
+  output $HOME_1 enable
+  output "AU Optronics 0x3CAD Unknown" disable
+}
+
+profile mobile_laptop {
+    output $LAPTOP_SCREEN enable
+}

@@ -12,6 +12,8 @@
   home.username = "blau";
   home.homeDirectory = "/home/blau";
   programs.zen-browser.enable = true;
+
+  nixpkgs.overlays = [ inputs.claude-code.overlays.default ];
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -40,7 +42,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-      
+      pkgs.claude-code
   ];
 
   programs.starship = {

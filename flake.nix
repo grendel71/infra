@@ -21,6 +21,7 @@
         home-manager.follows = "home-manager";
         };
     };
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     dotfiles = {
       url = "github:grendel71/dotfiles";
       flake = false;
@@ -33,6 +34,10 @@
   };
 
   outputs = { self, nixpkgs, sops-nix, antigravity-nix, ... }@inputs: {
+    claude-code.url = "github:sadjow/claude-code-nix";
+  };
+
+  outputs = { self, nixpkgs, sops-nix, determinate, claude-code, ... }@inputs: {
     nixosConfigurations.blau-pc = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -40,6 +45,7 @@
         ./hosts/pc
         inputs.home-manager.nixosModules.default
         sops-nix.nixosModules.sops
+        
       ];
       specialArgs = {
         inherit inputs;
@@ -52,9 +58,10 @@
         ./hosts/laptop
         inputs.home-manager.nixosModules.default
         sops-nix.nixosModules.sops
+        determinate.nixosModules.default
       ];
       specialArgs = {
-	inherit inputs;
+	      inherit inputs;
       };
     };
     nixosConfigurations.blau-alienware = nixpkgs.lib.nixosSystem {

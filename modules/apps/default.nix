@@ -79,10 +79,7 @@
     age
     sops
     direnv
-    seaweedfs
-
-    claude-code
-    nodejs_22                                                                                                                                                                                                  
+    seaweedfs                                                                                                                                                                                               
     ripgrep
     neomutt
   ];
