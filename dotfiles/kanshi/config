@@ -1,3 +1,4 @@
+# laptop docked
 output "Dell Inc. DELL S2715H V14F36CNAVJL" {
   mode 1920x1080@60.0
   position 0,0
@@ -12,13 +13,30 @@ output "LG Electronics LG FULL HD 0x01010101" {
   alias $INTERNAL
 }
 
+# laptop internal
 
 output "AU Optronics 0x3CAD Unknown" {
     mode 1920x1200@60.0
     position 0,0
-    scale 1.5 
+    scale 1.5
     alias $LAPTOP_SCREEN
 }
+
+output "Dell Inc. DELL S2715H V14F3713AHYL" {
+    mode 1920x1080@60.0
+    position 1920,0
+    scale 1.0
+    alias $DESKTOP_ALTSCREEN
+}
+
+output "Sceptre Tech Inc Sceptre F27 0x01010101" {
+    mode 1920x1080@100.0
+    position 0,0
+    scale 1.0
+    alias $DESKTOP_MAIN
+}
+
+
 
 profile home_1 {
   output $INTERNAL enable
@@ -28,4 +46,9 @@ profile home_1 {
 
 profile mobile_laptop {
     output $LAPTOP_SCREEN enable
+}
+
+profile desktop {
+    output $DESKTOP_MAIN enable
+    output $DESKTOP_ALTSCREEN enable
 }

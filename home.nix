@@ -1,10 +1,16 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
     ./modules
     inputs.zen-browser.homeModules.beta
     inputs.sops-nix.homeManagerModules.sops
+    inputs.noctalia.homeModules.default
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -42,7 +48,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-      pkgs.claude-code
+    pkgs.claude-code
   ];
 
   programs.starship = {
@@ -191,16 +197,15 @@
     };
   };
 
-
   services.gammastep = {
     enable = true;
     temperature = {
       day = 5500;
       night = 2600;
     };
-      latitude = "40.73";
-      longitude = "-74.03";
-      provider = "manual";
+    latitude = "40.73";
+    longitude = "-74.03";
+    provider = "manual";
 
   };
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -241,7 +246,7 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  xdg.mimeApps ={
+  xdg.mimeApps = {
     enable = true;
     defaultApplications = {
       "application/gzip" = "com.github.xournalpp.xournalpp.desktop";
@@ -318,8 +323,8 @@
     };
   };
   sops = {
-      age.keyFile = "/home/blau/infra/age.agekey";
-      defaultSymlinkPath = "/run/user/1000/secrets";
-      defaultSecretsMountPoint = "/run/user/1000/secrets.d";
+    age.keyFile = "/home/blau/infra/age.agekey";
+    defaultSymlinkPath = "/run/user/1000/secrets";
+    defaultSecretsMountPoint = "/run/user/1000/secrets.d";
   };
 }

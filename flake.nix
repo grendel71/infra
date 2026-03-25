@@ -19,7 +19,7 @@
         # to have it up-to-date or simply don't specify the nixpkgs input
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
-        };
+      };
     };
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     dotfiles = {
@@ -32,44 +32,62 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     claude-code.url = "github:sadjow/claude-code-nix";
-  };
-  outputs = { self, nixpkgs, sops-nix, determinate, claude-code, ... }@inputs: {
-    nixosConfigurations.blau-pc = inputs.nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        #./configuration.nix
-        ./hosts/pc
-        inputs.home-manager.nixosModules.default
-        sops-nix.nixosModules.sops
-        
-      ];
-      specialArgs = {
-        inherit inputs;
-      };
-    };
-    nixosConfigurations.blau-laptop = inputs.nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        #./configuration.nix
-        ./hosts/laptop
-        inputs.home-manager.nixosModules.default
-        sops-nix.nixosModules.sops
-        determinate.nixosModules.default
-      ];
-      specialArgs = {
-	      inherit inputs;
-      };
-    };
-    nixosConfigurations.blau-alienware = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        #./configuration.nix
-        ./hosts/alienware
-        inputs.home-manager.nixosModules.default
-        sops-nix.nixosModules.sops
-      ];
-    };
-  };
 
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    quickshell = {
+      # add ?ref=<tag> to track a tag
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+  outputs =
+    {
+      self,
+      nixpkgs,
+      sops-nix,
+      determinate,
+      claude-code,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations.blau-pc = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          #./configuration.nix
+          ./hosts/pc
+          inputs.home-manager.nixosModules.default
+          sops-nix.nixosModules.sops
+
+        ];
+        specialArgs = {
+          inherit inputs;
+        };
+      };
+      nixosConfigurations.blau-laptop = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          #./configuration.nix
+          ./hosts/laptop
+          inputs.home-manager.nixosModules.default
+          sops-nix.nixosModules.sops
+          determinate.nixosModules.default
+        ];
+        specialArgs = {
+          inherit inputs;
+        };
+      };
+      nixosConfigurations.blau-alienware = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          #./configuration.nix
+          ./hosts/alienware
+          inputs.home-manager.nixosModules.default
+          sops-nix.nixosModules.sops
+        ];
+      };
+    };
 
 }

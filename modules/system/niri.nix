@@ -2,7 +2,7 @@
 {
   programs.niri.enable = true;
   environment.systemPackages = with pkgs; [
-	  xwayland-satellite
+    xwayland-satellite
     #alacritty
     #sway
     #dbus-niri-environment
@@ -18,7 +18,6 @@
     waypaper
     swaybg
     kitty
-    wofi
     pcmanfm
     #kdePackages.dolphin
   ];
@@ -27,7 +26,6 @@
   services.gvfs.enable = true;
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.sway.enableGnomeKeyring = true;
-  
 
   programs.xfconf.enable = true;
 }

@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
@@ -9,7 +14,7 @@
     firefox
     htop
     jetbrains.idea
-    fuzzel
+    #fuzzel
     obsidian
     nextcloud-client
     waybar
@@ -51,5 +56,5 @@
     # rstudio
     pandoc
     #zed-editor
-    ];
+  ];
 }
