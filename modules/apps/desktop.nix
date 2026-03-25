@@ -50,6 +50,6 @@
     # education
     # rstudio
     pandoc
-    zed-editor
+    #zed-editor
     ];
 }

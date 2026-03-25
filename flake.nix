@@ -31,12 +31,8 @@
       url = "github:jacopone/antigravity-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  };
-
-  outputs = { self, nixpkgs, sops-nix, antigravity-nix, ... }@inputs: {
     claude-code.url = "github:sadjow/claude-code-nix";
   };
-
   outputs = { self, nixpkgs, sops-nix, determinate, claude-code, ... }@inputs: {
     nixosConfigurations.blau-pc = inputs.nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";

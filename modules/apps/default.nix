@@ -75,11 +75,11 @@
     pciutils # lspci
     usbutils # lsusb
     gptfdisk
-    
+
     age
     sops
     direnv
-    seaweedfs                                                                                                                                                                                               
+    seaweedfs
     ripgrep
     neomutt
   ];

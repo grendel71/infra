@@ -114,15 +114,56 @@
       cmd_duration.disabled = true;
     };
   };
-
-  programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+    functions = {
+      sysinfo = {
+        description = "Display system information";
+        body = ''
+          echo "System Information:"
+          echo "=================="
+          echo "Hostname: "(hostname)
+          echo "User: "$USER
+          echo "OS: "(uname -s)
+          echo "Kernel: "(uname -r)
+          echo "Uptime: "(uptime | cut -d',' -f1 | cut -d' ' -f4-)
+          echo "Memory: "(free -h | grep '^Mem:' | awk '{print $3"/"$2}')
+          echo "Disk Usage: "(df -h / | tail -1 | awk '{print $5" used"}')
+        '';
+      };
+      please = {
+        description = "Run command with sudo";
+        body = "sudo $argv";
+      };
+      mail = {
+        description = "Sync and open mail";
+        body = "notmuch new; neomutt";
+      };
+      rebuild = {
+        description = "Rebuild NixOS configuration";
+        body = "sudo nixos-rebuild switch --flake $HOME/infra/";
+      };
+      nsway = {
+        description = "Launch sway with unsupported GPU";
+        body = "sway --unsupported-gpu";
+      };
+      osync = {
+        description = "Sync vault";
+        body = "nix develop $HOME/syncVault/ --command bash -c 'cd /home/blau/syncVault && python /home/blau/syncVault/sync.py'";
+      };
+      ns = {
+        description = "Launch niri session";
+        body = "niri-session";
+      };
+    };
+  };
   programs.bash = {
     enable = true;
     enableCompletion = true;
     # TODO add your custom bashrc here
     bashrcExtra = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
-      [[ "$TERM" == "xterm-kitty" ]] && alias ssh="TERM=xterm-256color ssh" 
+      [[ "$TERM" == "xterm-kitty" ]] && alias ssh="TERM=xterm-256color ssh"
     '';
     shellAliases = {
       please = "sudo";
