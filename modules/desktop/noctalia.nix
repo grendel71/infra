@@ -41,8 +41,8 @@
               warningThreshold = 30;
             }
             {
-              formatHorizontal = "hh:mm";
-              formatVertical = "hh mm";
+              formatHorizontal = "hh:mm AP";
+              formatVertical = "hh mm AP";
               id = "Clock";
               useMonospacedFont = true;
               usePrimaryColor = true;

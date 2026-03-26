@@ -1,11 +1,15 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   services.logind.settings.Login = {
     HandleLidSwitch = "sleep";
     HandleLidSwitchExternalPower = "lock";
     HandleLidSwitchDocked = "ignore";
   };
-
 
   services = {
     thermald.enable = true;
@@ -28,11 +32,16 @@
       useStockConfig = true;
     };
   };
-powerManagement = {
-  enable = true;
-  powertop.enable = true;
-  cpuFreqGovernor = "powersave";
+  powerManagement = {
+    enable = true;
+    powertop.enable = true;
+    cpuFreqGovernor = "powersave";
 
-};
-#powerManagement.powertop.enable = true;
+  };
+
+  services.upower = {
+    enable = true;
+
+  };
+  #powerManagement.powertop.enable = true;
 }
