@@ -1,4 +1,10 @@
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   programs.vscode = {
     enable = true;
@@ -11,7 +17,12 @@
       vscjava.vscode-java-pack
       james-yu.latex-workshop
       anthropic.claude-code
-      
+
     ];
   };
+
+  home.packages = with pkgs; [
+    texliveFull
+    texlivePackages.titlesec
+  ];
 }
