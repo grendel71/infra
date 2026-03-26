@@ -5,11 +5,6 @@
   ...
 }:
 {
-
-  home.packages = with pkgs; [
-    inputs.quickshell.packages.x86_64-linux.default
-
-  ];
   # configure options
   programs.noctalia-shell = {
     enable = true;
@@ -46,11 +41,14 @@
               warningThreshold = 30;
             }
             {
-              formatHorizontal = "HH:mm";
-              formatVertical = "HH mm";
+              formatHorizontal = "hh:mm";
+              formatVertical = "hh mm";
               id = "Clock";
               useMonospacedFont = true;
               usePrimaryColor = true;
+            }
+            {
+              id = "Tray";
             }
           ];
         };
