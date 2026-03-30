@@ -278,7 +278,7 @@
         "org.gnome.Shotwell-Viewer.desktop"
       ];
       "image/png" = "org.nomacs.ImageLounge.desktop";
-      "inode/directory" = "pcmanfm.desktop";
+      "inode/directory" = "dolphin.desktop";
       "text/plain" = "codium.desktop";
       "video/3gp" = "mpv.desktop";
       "video/3gpp" = "mpv.desktop";

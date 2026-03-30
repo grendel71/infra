@@ -1,6 +1,12 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   programs.niri.enable = true;
+  nixpkgs.overlays = [ inputs.dolphin-overlay.overlays.default ];
   environment.systemPackages = with pkgs; [
     xwayland-satellite
     #alacritty
@@ -18,8 +24,7 @@
     waypaper
     swaybg
     kitty
-    pcmanfm
-    #kdePackages.dolphin
+    kdePackages.dolphin
   ];
 
   services.dbus.enable = true;

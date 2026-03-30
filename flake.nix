@@ -42,6 +42,8 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    dolphin-overlay.url = "github:rumboon/dolphin-overlay";
   };
   outputs =
     {
@@ -50,6 +52,7 @@
       sops-nix,
       determinate,
       claude-code,
+      dolphin-overlay,
       ...
     }@inputs:
     {
@@ -60,7 +63,6 @@
           ./hosts/pc
           inputs.home-manager.nixosModules.default
           sops-nix.nixosModules.sops
-
         ];
         specialArgs = {
           inherit inputs;
