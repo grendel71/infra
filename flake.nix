@@ -75,7 +75,6 @@
           ./hosts/laptop
           inputs.home-manager.nixosModules.default
           sops-nix.nixosModules.sops
-          determinate.nixosModules.default
         ];
         specialArgs = {
           inherit inputs;
