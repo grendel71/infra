@@ -149,6 +149,10 @@
         description = "Rebuild NixOS configuration";
         body = "sudo nixos-rebuild switch --flake $HOME/infra/";
       };
+      remotebuild = {
+        description = "remotely build configuration";
+        body = "sudo nixos-rebuild switch --build-host blau@blau-pc-1 --flake $HOME/infra";
+      };
       nsway = {
         description = "Launch sway with unsupported GPU";
         body = "sway --unsupported-gpu";
