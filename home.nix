@@ -122,6 +122,11 @@
   };
   programs.fish = {
     enable = true;
+    interactiveShellInit = ''
+      if test "$TERM" = "xterm-kitty"
+        alias ssh="TERM=xterm-256color /usr/bin/ssh"
+      end
+    '';
     functions = {
       sysinfo = {
         description = "Display system information";
