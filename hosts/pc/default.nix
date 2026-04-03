@@ -1,18 +1,25 @@
-{ config, pkgs, inputs, ... }:{  
-imports = [
-  ./fs.nix
-  ./hardware-configuration.nix
-  ./nvidia.nix
-  ./nvidia-prime.nix
-  ./smb.nix
-  #../../modules/programs/r.nix
-  #../../modules/
-  #../../modules/desktop/plasma.nix
-  #../../modules/desktop/sway.nix
-  ../../modules/system
-  ../../modules/system/qemu
-  #../modules/
-  ../../configuration.nix
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+{
+  imports = [
+    ./fs.nix
+    ./hardware-configuration.nix
+    ./nvidia.nix
+    ./nvidia-prime.nix
+    ./smb.nix
+    #../../modules/programs/r.nix
+    #../../modules/
+    #../../modules/desktop/plasma.nix
+    #../../modules/desktop/sway.nix
+    ../../modules/system
+    ../../modules/system/qemu
+    #../modules/
+    ../../configuration.nix
+    ../../modules/system/programs/ollama.nix
   ];
 
   networking.hostName = "blau-pc"; # Define your hostname.
@@ -27,12 +34,7 @@ imports = [
       "blau" = import ./home.nix;
     };
   };
-  services.ollama = {
-  enable = false;
-  # Optional: preload models, see https://ollama.com/library
-  #loadModels = [ "llama3.2:3b" "deepseek-r1:1.5b"];
-  acceleration = "cuda";
-};
+
   services.openssh.enable = true;
   users.users.blau = {
     openssh.authorizedKeys.keys = [

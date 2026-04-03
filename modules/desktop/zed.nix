@@ -1,8 +1,14 @@
-{config, pkgs, inputs, ...}:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   home.packages = with pkgs; [
     zed-editor
     nil
     nixd
+    opencode
   ];
 }
