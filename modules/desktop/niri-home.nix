@@ -50,6 +50,10 @@
 
     [KDE]
     OpenWithStyle=Open
+
+    [Colors:View]
+    BackgroundNormal=255,255,255
+    BackgroundAlternate=255,255,255
   '';
 
 }
