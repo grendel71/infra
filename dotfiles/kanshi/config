@@ -18,7 +18,7 @@ output "LG Electronics LG FULL HD 0x01010101" {
 output "AU Optronics 0x3CAD Unknown" {
     mode 1920x1200@60.0
     position 0,0
-    scale 1.5
+    scale 1.2
     alias $LAPTOP_SCREEN
 }
 
