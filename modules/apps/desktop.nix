@@ -56,5 +56,6 @@
     # rstudio
     pandoc
     #zed-editor
+
   ];
 }

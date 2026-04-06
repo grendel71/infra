@@ -8,7 +8,6 @@
 {
   imports = [
     ./modules
-    inputs.zen-browser.homeModules.beta
     inputs.sops-nix.homeManagerModules.sops
     inputs.noctalia.homeModules.default
   ];
@@ -17,8 +16,6 @@
   # manage.
   home.username = "blau";
   home.homeDirectory = "/home/blau";
-  programs.zen-browser.enable = true;
-
   nixpkgs.overlays = [ inputs.claude-code.overlays.default ];
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release

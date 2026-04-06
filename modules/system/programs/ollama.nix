@@ -11,6 +11,9 @@ let
   };
 in
 {
+  environment.systemPackages = with pkgs-unstable; [
+    zeroclaw
+  ];
   services.ollama = {
     enable = true;
     loadModels = [
