@@ -19,7 +19,7 @@
     ../../modules/system/qemu
     #../modules/
     ../../configuration.nix
-    ../../modules/system/programs/ollama.nix
+    #../../modules/system/programs/ollama.nix
     ./gh-runner.nix
   ];
 
