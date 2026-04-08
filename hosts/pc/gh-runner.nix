@@ -1,6 +1,6 @@
 {config, pkgs, ...}:
 {
-    sops.secrets.runner_token.sopsFile = ../../secrets/secret.yaml;
+    sops.secrets.runner_token.sopsFile = ../../secrets/gh.yaml;
 
     # GitHub Actions Runner
     services.github-runners = {
@@ -8,7 +8,7 @@
         enable = true;
         
         # Your repo or org URL
-        url = "https://github.com/your-org/your-repo";
+        url = "https://github.com/grendel71/infra";
         
         # Token file — never put the token directly in the config
         tokenFile = config.sops.runner_token.path;
