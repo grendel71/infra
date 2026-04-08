@@ -82,6 +82,11 @@
           sops-nix.nixosModules.sops
         ];
       };
+
+      hydraJobs = {
+        blauPc = self.nixosConfigurations.blau-pc.config.system.build.toplevel;
+        blauLaptop = self.nixosConfigurations.blau-laptop.config.system.build.toplevel;
+      };
     };
 
 }
