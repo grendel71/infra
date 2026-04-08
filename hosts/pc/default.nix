@@ -20,7 +20,8 @@
     #../modules/
     ../../configuration.nix
     #../../modules/system/programs/ollama.nix
-    ./gh-runner.nix
+    #./gh-runner.nix
+    ./hydra.nix
   ];
 
   networking.hostName = "blau-pc"; # Define your hostname.
