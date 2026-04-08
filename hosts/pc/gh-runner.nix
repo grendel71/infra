@@ -11,7 +11,7 @@
         url = "https://github.com/grendel71/infra";
         
         # Token file — never put the token directly in the config
-        tokenFile = config.sops.runner_token.path;
+        tokenFile = config.sops.secrets.runner_token.path;
         
         # Labels used in runs-on: [self-hosted, nix-builder]
         extraLabels = [ "nix-builder" "nixos" ];
