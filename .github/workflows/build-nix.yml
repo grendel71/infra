@@ -1,0 +1,32 @@
+name: Build NixOS & Push to S3 Cache
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build ${{ matrix.configuration }}
+    runs-on: self-hosted
+    strategy:
+      matrix:
+        configuration: [blau-pc, blau-laptop, blau-alienware]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build NixOS configuration
+        run: |
+          nix build \
+            .#nixosConfigurations.${{ matrix.configuration }}.config.system.build.toplevel \
+            --no-link \
+            --print-out-paths \
+            -L
+
+      - name: Push to S3 binary cache
+        run: |
+          outpath=$(nix build \
+            .#nixosConfigurations.${{ matrix.configuration }}.config.system.build.toplevel \
+            --no-link \
+            --print-out-paths)
+          nix copy --to "s3://${NIX_CACHE_BUCKET}?endpoint=${S3_ENDPOINT}&scheme=http" "$outpath"
