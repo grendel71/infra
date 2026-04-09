@@ -14,7 +14,7 @@ jobs:
         configuration: [blau-pc, blau-laptop, blau-alienware]
     steps:
       - uses: actions/checkout@v4
-
+      - uses: cachix/install-nix-action@08dcb3a5e62fa31e2da3d490afc4176ef55ecd72 # v30
       - name: Build NixOS configuration
         run: |
           nix build \
