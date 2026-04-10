@@ -2,13 +2,19 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
 
-
-
   # Bootloader.
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -22,7 +28,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
   programs.nm-applet.enable = true;
-
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -82,9 +87,13 @@
   users.users.blau = {
     isNormalUser = true;
     description = "blau";
-    extraGroups = [ "networkmanager" "wheel" "docker"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+    ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
     #shell = pkgs.fish;
   };
@@ -100,12 +109,11 @@
     '';
   };
 
-
   # Install firefox.
   #programs.firefox.enable = true;
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  #nixpkgs.config.allowUnfree = true;
 
   #hardware.opentabletdriver.enable = true;
 
@@ -149,14 +157,13 @@
   ];
   services.usbmuxd.enable = true;
 
-
   virtualisation.docker = {
     enable = true;
   };
 
   networking.firewall = {
-  enable = true;
-  trustedInterfaces = [ "docker0" ];
+    enable = true;
+    trustedInterfaces = [ "docker0" ];
   };
 
   hardware.bluetooth.enable = true;

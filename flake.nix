@@ -56,6 +56,7 @@
           ./hosts/pc
           inputs.home-manager.nixosModules.default
           sops-nix.nixosModules.sops
+          { nixpkgs.config.allowUnfree = true; }
         ];
         specialArgs = {
           inherit inputs;
@@ -68,6 +69,7 @@
           ./hosts/laptop
           inputs.home-manager.nixosModules.default
           sops-nix.nixosModules.sops
+          { nixpkgs.config.allowUnfree = true; }
         ];
         specialArgs = {
           inherit inputs;
@@ -80,6 +82,7 @@
           ./hosts/alienware
           inputs.home-manager.nixosModules.default
           sops-nix.nixosModules.sops
+          { nixpkgs.config.allowUnfree = true; }
         ];
       };
 
