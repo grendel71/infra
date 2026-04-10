@@ -23,6 +23,8 @@ jobs:
             .#nixosConfigurations.${{ matrix.configuration }}.config.system.build.toplevel \
             --no-link \
             --print-out-paths \
+            --extra-substituters "s3://${NIX_CACHE_BUCKET}?endpoint=${S3_ENDPOINT}&scheme=http" \
+            --extra-trusted-substituters "s3://${NIX_CACHE_BUCKET}?endpoint=${S3_ENDPOINT}&scheme=http" \
             -L
 
       - name: Push to S3 binary cache

@@ -1,8 +1,9 @@
-{ ... }:{  
-imports = [
-  #./r.nix
-  ./steam.nix
-  
-];
+{ ... }:
+{
+  imports = [
+    #./r.nix
+    #./steam.nix
+
+  ];
 
 }
