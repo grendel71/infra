@@ -257,7 +257,7 @@
     defaultApplications = {
       "application/gzip" = "com.github.xournalpp.xournalpp.desktop";
       "application/pdf" = [
-        "zen-beta.desktop"
+        "firefox.desktop"
       ];
       "application/x-matroska" = "mpv.desktop";
       "audio/aac" = "mpv.desktop";
@@ -321,7 +321,7 @@
 
       "x-scheme-handler/mailto" = "userapp-Thunderbird-I99ND3.desktop";
       "x-scheme-handler/mid" = "userapp-Thunderbird-I99ND3.desktop";
-      "text/html" = "zen-beta.desktop"; # Or 'chromium.desktop', 'qutebrowser.desktop' etc.
+      "text/html" = "firefox.desktop"; # Or 'chromium.desktop', 'qutebrowser.desktop' etc.
       "x-scheme-handler/http" = "firefox.desktop";
       "x-scheme-handler/https" = "firefox.desktop";
       "x-scheme-handler/about" = "firefox.desktop";
