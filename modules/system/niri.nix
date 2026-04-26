@@ -1,30 +1,23 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }:
 {
   programs.niri.enable = true;
-  nixpkgs.overlays = [ inputs.dolphin-overlay.overlays.default ];
   environment.systemPackages = with pkgs; [
     xwayland-satellite
-    #alacritty
-    #sway
-    #dbus-niri-environment
-    #configure-gtk
     wayland
     xdg-utils
     glib
-    #whitesur-icon-theme
-    #grim
+    grim
     slurp
     wl-clipboard
     capitaine-cursors
     waypaper
     swaybg
     kitty
-    kdePackages.dolphin
+    nautilus
   ];
 
   services.dbus.enable = true;

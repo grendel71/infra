@@ -34,19 +34,15 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    dolphin-overlay.url = "github:rumboon/dolphin-overlay";
   };
   outputs =
-    {
-      self,
-      nixpkgs,
-      sops-nix,
-      determinate,
-      claude-code,
-      dolphin-overlay,
-      nixpkgs-unstable,
-      ...
+    { self
+    , nixpkgs
+    , sops-nix
+    , determinate
+    , claude-code
+    , nixpkgs-unstable
+    , ...
     }@inputs:
     {
       nixosConfigurations.blau-pc = inputs.nixpkgs.lib.nixosSystem {

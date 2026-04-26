@@ -18,6 +18,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   #boot.kernelPackages = pkgs.linuxPackages_6_13;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 

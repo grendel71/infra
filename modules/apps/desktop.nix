@@ -30,7 +30,7 @@
     #wofi
 
     #xfce.thunar
-    #dolphin
+    #nautilus
     qalculate-qt
     #gimp
     kitty

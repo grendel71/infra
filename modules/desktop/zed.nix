@@ -32,12 +32,6 @@
       assistant = {
         enabled = true;
         version = "2";
-        default_open_ai_model = null;
-
-        # Provider options:
-        # - zed.dev models (claude-3-5-sonnet-latest) requires GitHub connected
-        # - anthropic models (claude-3-5-sonnet-latest, claude-3-haiku-latest, claude-3-opus-latest) requires API_KEY
-        # - copilot_chat models (gpt-4o, gpt-4, gpt-3.5-turbo, o1-preview) requires GitHub connected
         default_model = {
           provider = "zed.dev";
           model = "claude-3-5-sonnet-latest";
@@ -79,8 +73,6 @@
           TERM = "alacritty";
         };
         font_family = "FiraCode Nerd Font";
-        font_features = null;
-        font_size = null;
         line_height = "comfortable";
         option_as_meta = false;
         button = false;
