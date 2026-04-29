@@ -11,10 +11,6 @@
 {
 
   # Bootloader.
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -26,6 +22,18 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+
+    # Keep default NixOS caches (e.g. cache.nixos.org) and
+    # add Codex CLI's Cachix cache for faster builds.
+    extra-substituters = [ "https://codex-cli.cachix.org" ];
+    extra-trusted-public-keys = [ "codex-cli.cachix.org-1:1Br3H1hHoRYG22n//cGKJOk3cQXgYobUel6O8DgSing=" ];
+  };
 
   # Enable networking
   networking.networkmanager.enable = true;

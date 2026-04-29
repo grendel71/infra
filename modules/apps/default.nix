@@ -82,5 +82,8 @@
     seaweedfs
     ripgrep
     neomutt
+
+    mc
+
   ];
 }

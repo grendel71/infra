@@ -11,6 +11,7 @@
     nil
     nixd
     opencode
+    codex-acp
   ];
 
   programs.zed-editor = {
@@ -154,6 +155,13 @@
         "OpenCode" = {
           command = "opencode";
           args = [ "acp" ];
+        };
+        "Codex" = {
+          command = "codex-acp";
+          args = [
+            "-c"
+            "sandbox_mode=\"workspace-write\""
+          ];
         };
       };
 

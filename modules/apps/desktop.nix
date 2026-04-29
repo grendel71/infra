@@ -56,6 +56,6 @@
     # rstudio
     pandoc
     #zed-editor
-
+    sioyek
   ];
 }

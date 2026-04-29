@@ -6,18 +6,8 @@
 }:
 {
   imports = [
-    #  ./fs.nix
     ./hardware-configuration.nix
-    #./nvidia.nix
-    #./nvidia-prime.nix
-    #./smb.nix
-    #../../modules/programs/r.nix
-    #../../modules/desktop/plasma.nix
-    #../../modules/desktop/sway.nix
-    #../../modules/desktop/niri.nix
     ../../modules/system
-    #../../modules/qemu
-    #../modules/
     ../../configuration.nix
     ./powermgmt.nix
   ];
@@ -29,7 +19,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     users = {
-      "blau" = import ./home.nix;
+      "blau" = import ../../home.nix;
     };
   };
   services.openssh.enable = true;

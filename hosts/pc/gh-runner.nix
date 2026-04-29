@@ -26,7 +26,11 @@
 
         # Extra nix config for the runner
         extraEnvironment = {
-            NIX_CONFIG = "experimental-features = nix-command flakes";
+            NIX_CONFIG = ''
+              experimental-features = nix-command flakes
+              extra-substituters = https://codex-cli.cachix.org
+              extra-trusted-public-keys = codex-cli.cachix.org-1:1Br3H1hHoRYG22n//cGKJOk3cQXgYobUel6O8DgSing=
+            '';
         };
         };
     };

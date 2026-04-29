@@ -16,7 +16,7 @@
   # manage.
   home.username = "blau";
   home.homeDirectory = "/home/blau";
-  nixpkgs.overlays = [ inputs.claude-code.overlays.default ];
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -46,6 +46,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     pkgs.claude-code
+    inputs.codex-cli-nix.packages.${pkgs.system}.default
   ];
 
   programs.starship = {

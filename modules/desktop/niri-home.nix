@@ -7,9 +7,7 @@
 }:
 
 {
-  imports = [
-    #./theming-sway.nix
-  ];
+  imports = [ ];
   home.packages = with pkgs; [
     #grim
     #waybar

@@ -1,6 +1,13 @@
 {
   description = "System config";
 
+  nixConfig = {
+    extra-substituters = [ "https://codex-cli.cachix.org" ];
+    extra-trusted-public-keys = [
+      "codex-cli.cachix.org-1:1Br3H1hHoRYG22n//cGKJOk3cQXgYobUel6O8DgSing="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
@@ -19,10 +26,7 @@
       flake = false;
     };
 
-    antigravity-nix = {
-      url = "github:jacopone/antigravity-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    codex-cli-nix.url = "github:sadjow/codex-cli-nix";
     claude-code.url = "github:sadjow/claude-code-nix";
 
     noctalia = {
@@ -36,52 +40,55 @@
     };
   };
   outputs =
-    { self
-    , nixpkgs
-    , sops-nix
-    , determinate
-    , claude-code
-    , nixpkgs-unstable
-    , ...
+    {
+      self,
+      nixpkgs,
+      sops-nix,
+      determinate,
+      claude-code,
+      nixpkgs-unstable,
+      codex-cli-nix,
+      ...
     }@inputs:
+    let
+      system = "x86_64-linux";
+      sharedModules = [
+        inputs.home-manager.nixosModules.default
+        sops-nix.nixosModules.sops
+        {
+          nixpkgs.config.allowUnfree = true;
+          nixpkgs.overlays = [
+            (final: _prev: {
+              unstable = import nixpkgs-unstable {
+                inherit system;
+                config.allowUnfree = true;
+              };
+            })
+            inputs.polymc.overlay
+            claude-code.overlays.default
+          ];
+        }
+      ];
+    in
     {
       nixosConfigurations.blau-pc = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          #./configuration.nix
+        inherit system;
+        modules = sharedModules ++ [
           ./hosts/pc
-          inputs.home-manager.nixosModules.default
-          sops-nix.nixosModules.sops
-          { nixpkgs.config.allowUnfree = true; }
         ];
         specialArgs = {
           inherit inputs;
         };
       };
       nixosConfigurations.blau-laptop = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          #./configuration.nix
+        inherit system;
+        modules = sharedModules ++ [
           ./hosts/laptop
-          inputs.home-manager.nixosModules.default
-          sops-nix.nixosModules.sops
-          { nixpkgs.config.allowUnfree = true; }
         ];
         specialArgs = {
           inherit inputs;
         };
       };
-      nixosConfigurations.blau-alienware = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          #./configuration.nix
-          ./hosts/alienware
-          inputs.home-manager.nixosModules.default
-          sops-nix.nixosModules.sops
-          { nixpkgs.config.allowUnfree = true; }
-        ];
-      };
-
       hydraJobs = {
         blauPc = self.nixosConfigurations.blau-pc.config.system.build.toplevel;
         blauLaptop = self.nixosConfigurations.blau-laptop.config.system.build.toplevel;

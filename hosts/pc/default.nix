@@ -11,16 +11,9 @@
     ./nvidia.nix
     ./nvidia-prime.nix
     ./smb.nix
-    #../../modules/programs/r.nix
-    #../../modules/
-    #../../modules/desktop/plasma.nix
-    #../../modules/desktop/sway.nix
     ../../modules/system
     ../../modules/system/qemu
-    #../modules/
     ../../configuration.nix
-    #../../modules/system/programs/ollama.nix
-    #./gh-runner.nix
     ./hydra.nix
   ];
 
@@ -33,7 +26,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     users = {
-      "blau" = import ./home.nix;
+      "blau" = import ../../home.nix;
     };
   };
 
