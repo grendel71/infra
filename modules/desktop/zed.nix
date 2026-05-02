@@ -10,7 +10,7 @@
     zed-editor-fhs
     nil
     nixd
-    opencode
+    unstable.opencode
     codex-acp
   ];
 

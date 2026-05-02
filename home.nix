@@ -47,6 +47,8 @@
     # '')
     pkgs.claude-code
     inputs.codex-cli-nix.packages.${pkgs.system}.default
+    inputs.t3code.packages.${pkgs.system}.default
+    inputs.helium.packages.${pkgs.system}.default
   ];
 
   programs.starship = {

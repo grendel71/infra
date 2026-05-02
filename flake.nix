@@ -26,6 +26,16 @@
       flake = false;
     };
 
+    t3code = {
+      url = "github:rodeyseijkens/t3code-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    helium = {
+      url = "github:schembriaiden/helium-browser-nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     codex-cli-nix.url = "github:sadjow/codex-cli-nix";
     claude-code.url = "github:sadjow/claude-code-nix";
 
@@ -48,6 +58,8 @@
       claude-code,
       nixpkgs-unstable,
       codex-cli-nix,
+      t3code,
+      helium,
       ...
     }@inputs:
     let
@@ -55,6 +67,7 @@
       sharedModules = [
         inputs.home-manager.nixosModules.default
         sops-nix.nixosModules.sops
+        t3code.nixosModules.default
         {
           nixpkgs.config.allowUnfree = true;
           nixpkgs.overlays = [
@@ -66,6 +79,7 @@
             })
             inputs.polymc.overlay
             claude-code.overlays.default
+
           ];
         }
       ];

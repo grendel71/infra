@@ -24,7 +24,7 @@ output "AU Optronics 0x3CAD Unknown" {
 
 output "Dell Inc. DELL S2715H V14F3713AHYL" {
     mode 1920x1080@60.0
-    position 1920,0
+    position -1920,0
     scale 1.0
     alias $DESKTOP_ALTSCREEN
 }
