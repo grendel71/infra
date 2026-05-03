@@ -6,6 +6,7 @@
     ./mail.nix
     ./kanshi.nix
     ./zed.nix
+    ./opencode.nix
     ./fuzzel.nix
     ./noctalia.nix
   ];

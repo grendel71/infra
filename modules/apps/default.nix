@@ -82,7 +82,8 @@
     seaweedfs
     ripgrep
     neomutt
-
+    talosctl
+    kubectl
     mc
 
   ];

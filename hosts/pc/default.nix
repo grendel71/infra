@@ -14,7 +14,6 @@
     ../../modules/system
     ../../modules/system/qemu
     ../../configuration.nix
-    ./hydra.nix
   ];
 
   networking.hostName = "blau-pc"; # Define your hostname.

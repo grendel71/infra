@@ -10,7 +10,6 @@
     zed-editor-fhs
     nil
     nixd
-    unstable.opencode
     codex-acp
   ];
 
@@ -26,6 +25,7 @@
       "make"
       "opencode"
       "ocaml"
+      "java"
     ];
 
     # Everything inside of these brackets are Zed options

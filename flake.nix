@@ -68,6 +68,7 @@
         inputs.home-manager.nixosModules.default
         sops-nix.nixosModules.sops
         t3code.nixosModules.default
+
         {
           nixpkgs.config.allowUnfree = true;
           nixpkgs.overlays = [
@@ -102,10 +103,6 @@
         specialArgs = {
           inherit inputs;
         };
-      };
-      hydraJobs = {
-        blauPc = self.nixosConfigurations.blau-pc.config.system.build.toplevel;
-        blauLaptop = self.nixosConfigurations.blau-laptop.config.system.build.toplevel;
       };
     };
 
