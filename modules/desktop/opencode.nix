@@ -29,7 +29,8 @@ in
       "$schema": "https://opencode.ai/config.json",
       "plugin": [
         "@ex-machina/opencode-anthropic-auth@1.8.0",
-        "superpowers@git+https://github.com/obra/superpowers.git"
+        "superpowers@git+https://github.com/obra/superpowers.git",
+        "opencode-websearch"
       ]
     }
   '';
