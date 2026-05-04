@@ -13,6 +13,7 @@
     ./smb.nix
     ../../modules/system
     ../../modules/system/qemu
+    ../../modules/system/block-social.nix
     ../../configuration.nix
   ];
 

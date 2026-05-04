@@ -49,10 +49,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    lockin = {
-      url = "path:/home/blau/lockin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
   outputs =
     {
@@ -65,7 +61,6 @@
       codex-cli-nix,
       t3code,
       helium,
-      lockin,
       ...
     }@inputs:
     let
@@ -96,8 +91,6 @@
         inherit system;
         modules = sharedModules ++ [
           ./hosts/pc
-          lockin.nixosModules.default
-          { services.lockin.enable = true; }
         ];
         specialArgs = {
           inherit inputs;
@@ -107,8 +100,6 @@
         inherit system;
         modules = sharedModules ++ [
           ./hosts/laptop
-          lockin.nixosModules.default
-          { services.lockin.enable = true; }
         ];
         specialArgs = {
           inherit inputs;
