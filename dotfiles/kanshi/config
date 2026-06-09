@@ -52,3 +52,8 @@ profile desktop {
     output $DESKTOP_MAIN enable
     output $DESKTOP_ALTSCREEN enable
 }
+profile home_2 {
+	output $INTERNAL disable
+	output $LAPTOP_SCREEN disable
+	output $DESKTOP_ALTSCREEN enable
+}
