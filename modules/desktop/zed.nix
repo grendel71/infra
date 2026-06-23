@@ -10,7 +10,7 @@
     zed-editor-fhs
     nil
     nixd
-    codex-acp
+    #inputs.claude-cowork.packages.${pkgs.system}.default
   ];
 
   programs.zed-editor = {

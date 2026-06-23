@@ -20,7 +20,7 @@
     waybar
     thunderbird
     libreoffice-qt
-    bitwarden-desktop
+    #bitwarden-desktop
     mpv
     nomacs
     keepassxc
@@ -28,14 +28,14 @@
     #alacritty
     #waybar
     #wofi
-
+    keepassxc
     #xfce.thunar
     #nautilus
     qalculate-qt
     #gimp
     kitty
     pavucontrol
-
+    google-chrome
     #moonlight-qt
     calibre
 

@@ -32,7 +32,9 @@
     # Keep default NixOS caches (e.g. cache.nixos.org) and
     # add Codex CLI's Cachix cache for faster builds.
     extra-substituters = [ "https://codex-cli.cachix.org" ];
-    extra-trusted-public-keys = [ "codex-cli.cachix.org-1:1Br3H1hHoRYG22n//cGKJOk3cQXgYobUel6O8DgSing=" ];
+    extra-trusted-public-keys = [
+      "codex-cli.cachix.org-1:1Br3H1hHoRYG22n//cGKJOk3cQXgYobUel6O8DgSing="
+    ];
   };
 
   # Enable networking
@@ -71,7 +73,12 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = [
+      pkgs.brlaser
+    ];
+  };
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -164,6 +171,7 @@
     #(callPackage ./modules/tilp.nix   { })
     git
     networkmanagerapplet
+    brlaser
   ];
   services.usbmuxd.enable = true;
 

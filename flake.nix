@@ -1,18 +1,10 @@
 {
   description = "System config";
-
-  nixConfig = {
-    extra-substituters = [ "https://codex-cli.cachix.org" ];
-    extra-trusted-public-keys = [
-      "codex-cli.cachix.org-1:1Br3H1hHoRYG22n//cGKJOk3cQXgYobUel6O8DgSing="
-    ];
-  };
-
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-26.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     polymc.url = "github:PolyMC/PolyMC";
@@ -25,18 +17,6 @@
       url = "github:grendel71/dotfiles";
       flake = false;
     };
-
-    t3code = {
-      url = "github:rodeyseijkens/t3code-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    helium = {
-      url = "github:schembriaiden/helium-browser-nix-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    codex-cli-nix.url = "github:sadjow/codex-cli-nix";
     claude-code.url = "github:sadjow/claude-code-nix";
 
     noctalia = {
@@ -48,6 +28,15 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    iloader.url = "github:nab138/iloader";
+
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
 
   };
   outputs =
@@ -58,9 +47,9 @@
       determinate,
       claude-code,
       nixpkgs-unstable,
-      codex-cli-nix,
-      t3code,
-      helium,
+      zen-browser,
+      disko,
+      nixos-facter-modules,
       ...
     }@inputs:
     let
@@ -68,7 +57,6 @@
       sharedModules = [
         inputs.home-manager.nixosModules.default
         sops-nix.nixosModules.sops
-        t3code.nixosModules.default
 
         {
           nixpkgs.config.allowUnfree = true;
@@ -100,6 +88,16 @@
         inherit system;
         modules = sharedModules ++ [
           ./hosts/laptop
+        ];
+        specialArgs = {
+          inherit inputs;
+        };
+      };
+      nixosConfigurations.blau-tlaptop = inputs.nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = sharedModules ++ [
+          disko.nixosModules.disko
+          ./hosts/tlaptop
         ];
         specialArgs = {
           inherit inputs;

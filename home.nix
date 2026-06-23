@@ -10,6 +10,7 @@
     ./modules
     inputs.sops-nix.homeManagerModules.sops
     inputs.noctalia.homeModules.default
+    #inputs.zen-browser.packages
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -45,10 +46,9 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    #
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     pkgs.claude-code
-    inputs.codex-cli-nix.packages.${pkgs.system}.default
-    inputs.t3code.packages.${pkgs.system}.default
-    inputs.helium.packages.${pkgs.system}.default
   ];
 
   programs.starship = {
@@ -288,6 +288,24 @@
       ];
       "image/png" = "org.nomacs.ImageLounge.desktop";
       "inode/directory" = "org.gnome.Nautilus.desktop";
+      # Document files - LibreOffice
+      "application/msword" = "writer.desktop"; # .doc
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "writer.desktop"; # .docx
+      "application/vnd.oasis.opendocument.text" = "writer.desktop"; # .odt
+      "application/rtf" = "writer.desktop"; # .rtf
+
+      "application/vnd.ms-excel" = "calc.desktop"; # .xls
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = "calc.desktop"; # .xlsx
+      "application/vnd.oasis.opendocument.spreadsheet" = "calc.desktop"; # .ods
+      "text/csv" = "calc.desktop"; # .csv
+
+      "application/vnd.ms-powerpoint" = "impress.desktop"; # .ppt
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation" = "impress.desktop"; # .pptx
+      "application/vnd.oasis.opendocument.presentation" = "impress.desktop"; # .odp
+
+      "application/vnd.visio" = "draw.desktop"; # .vsd
+      "application/vnd.oasis.opendocument.graphics" = "draw.desktop"; # .odg
+
       "text/plain" = "codium.desktop";
       "video/3gp" = "mpv.desktop";
       "video/3gpp" = "mpv.desktop";

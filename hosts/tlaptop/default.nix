@@ -10,9 +10,10 @@
     ../../modules/system
     ../../configuration.nix
     ./powermgmt.nix
+    ./disk-config.nix
   ];
 
-  networking.hostName = "blau-laptop"; # Define your hostname.
+  networking.hostName = "blau-tlaptop"; # Define your hostname.
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };

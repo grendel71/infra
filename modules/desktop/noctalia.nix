@@ -26,14 +26,13 @@
             {
               id = "Bluetooth";
             }
-          ];
-          center = [
             {
               hideUnoccupied = false;
               id = "Workspace";
               labelMode = "none";
             }
           ];
+          center = [];
           right = [
             {
               alwaysShowPercentage = false;
