@@ -175,7 +175,7 @@ in
       };
       bw-decrypt = {
         description = "Decrypt encrypted bitwarden .json file from backup system";
-        body = "nix shell nixpkgs#python3 nixpkgs#python312Packages.click nixpkgs#openssl --command python ${scripts}/bw-decrypt.py $argv";
+        body = "nix shell nixpkgs#openssl \"nixpkgs#python3.withPackages(ps: [ps.click])\" --command python ${scripts}/bw-decrypt.py $argv";
       };
     };
   };
