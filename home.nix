@@ -5,6 +5,9 @@
   ...
 }:
 
+let
+  scripts = builtins.toString ./dotfiles/scripts;
+in
 {
   imports = [
     ./modules
@@ -169,6 +172,10 @@
       ns = {
         description = "Launch niri session";
         body = "niri-session";
+      };
+      bw-decrypt = {
+        description = "Decrypt encrypted bitwarden .json file from backup system";
+        body = "nix shell nixpkgs#python3 nixpkgs#python312Packages.click nixpkgs#openssl --command python ${scripts}/bw-decrypt.py $argv";
       };
     };
   };

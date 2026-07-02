@@ -10,6 +10,7 @@
     ../../modules/system
     ../../configuration.nix
     ./powermgmt.nix
+    ../pc/nvidia.nix
   ];
 
   networking.hostName = "blau-laptop"; # Define your hostname.

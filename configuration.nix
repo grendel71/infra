@@ -108,6 +108,8 @@
       "networkmanager"
       "wheel"
       "docker"
+      "adbusers"
+      "kvm"
     ];
     packages = with pkgs; [
       #  thunderbird
@@ -172,6 +174,7 @@
     git
     networkmanagerapplet
     brlaser
+    nvtopPackages.full
   ];
   services.usbmuxd.enable = true;
 

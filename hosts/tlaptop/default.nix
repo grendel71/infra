@@ -14,15 +14,6 @@
   ];
 
   networking.hostName = "blau-tlaptop"; # Define your hostname.
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users = {
-      "blau" = import ../../home.nix;
-    };
-  };
   services.openssh.enable = true;
 
   users.users.blau = {
@@ -39,4 +30,7 @@
       size = 32 * 1024; # 16 GiB
     }
   ];
+
+  programs.adb.enable = true;
+
 }
