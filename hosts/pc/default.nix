@@ -6,14 +6,14 @@
 }:
 {
   imports = [
-    ./fs.nix
+    #./fs.nix
     ./hardware-configuration.nix
     ./nvidia.nix
-    ./nvidia-prime.nix
-    ./smb.nix
+    #./nvidia-prime.nix
+    #./smb.nix
     ../../modules/system
     ../../modules/system/qemu
-    ../../modules/system/block-social.nix
+    #modules/system/block-social.nix
     ../../configuration.nix
   ];
 
