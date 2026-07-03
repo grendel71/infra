@@ -11,6 +11,7 @@
     ../../configuration.nix
     ./powermgmt.nix
     ../pc/nvidia.nix
+    ../pc/nvidia-prime.nix
   ];
 
   networking.hostName = "blau-laptop"; # Define your hostname.
