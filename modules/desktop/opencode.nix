@@ -90,9 +90,8 @@ let
       };
       build = {
         model = "deepseek/deepseek-v4-pro";
-        mode = "subagent";
-        hidden = true;
-        description = "Implementation subagent on DeepSeek V4";
+        mode = "all";
+        description = "Implementation agent on DeepSeek V4";
         prompt = ''
           You are an implementation agent. Follow the plan you are given exactly.
           - Complete the task to the best of your ability.
