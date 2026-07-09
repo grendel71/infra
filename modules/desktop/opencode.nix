@@ -128,7 +128,7 @@ let
 
     token=$(cat ${config.sops.secrets."obsidian-mcp-token".path})
 
-    ${lib.getExe pkgs.jq} \
+    ${lib.getExe pkgs.jq} -n \
       --slurpfile base ${openCodeConfigJson} \
       --arg obsidian_token "$token" \
       '$base[0] |
