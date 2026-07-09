@@ -11,7 +11,7 @@ let
       wrapProgram $out/bin/opencode \
         --prefix LD_LIBRARY_PATH : "${pkgs.stdenv.cc.cc.lib}/lib" \
         --set NODE_TLS_REJECT_UNAUTHORIZED 0 \
-        --run 'export DEEPSEEK_API_KEY=$(cat /run/user/1000/secrets/deepseek 2>/dev/null || echo "")'
+        --run 'export DEEPSEEK_API_KEY=$(cat ${config.sops.secrets.deepseek.path} 2>/dev/null || echo "")'
     '';
   });
 
