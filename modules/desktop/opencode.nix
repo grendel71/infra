@@ -10,7 +10,8 @@ let
     postFixup = (old.postFixup or "") + ''
       wrapProgram $out/bin/opencode \
         --prefix LD_LIBRARY_PATH : "${pkgs.stdenv.cc.cc.lib}/lib" \
-        --set NODE_TLS_REJECT_UNAUTHORIZED 0
+        --set NODE_TLS_REJECT_UNAUTHORIZED 0 \
+        --run 'export DEEPSEEK_API_KEY=$(cat /run/user/1000/secrets/deepseek 2>/dev/null || echo "")'
     '';
   });
 
@@ -48,32 +49,95 @@ let
     mv "$authFile.tmp" "$authFile"
   '';
 
+  openCodeConfigJson = pkgs.writeText "opencode-config-base.json" (builtins.toJSON {
+    "$schema" = "https://opencode.ai/config.json";
+    plugin = [
+      "@ex-machina/opencode-anthropic-auth@1.8.1"
+      "superpowers@git+https://github.com/obra/superpowers.git"
+      "opencode-websearch"
+    ];
+    provider = {
+      deepseek = {
+        name = "DeepSeek";
+        api = "openai-compatible";
+        env = [ "DEEPSEEK_API_KEY" ];
+        baseURL = "https://api.deepseek.com";
+      };
+    };
+    default_agent = "plan";
+    small_model = "deepseek/deepseek-v4-pro";
+    agent = {
+      plan = {
+        model = "anthropic/claude-opus-4-5";
+        mode = "primary";
+        description = "Orchestrator: writes plans, dispatches implementation, escalates on failure";
+        prompt = ''
+          You are an orchestrator for software engineering tasks. Your responsibilities:
+
+          1. PLAN: Use the writing-plans skill to create detailed implementation plans.
+          2. DISPATCH: Dispatch each independent plan step to the "build" agent (DeepSeek V4)
+             via the Task tool. Run independent steps in parallel when possible.
+          3. EVALUATE: When a build agent returns, assess the result. Look for:
+             - Errors, tool failures, or incomplete work
+             - "[ESCALATE: <reason>]" markers
+             - Unsatisfactory or low-quality output
+          4. ESCALATE: On failure, re-dispatch the same task to "claude-build" (Claude Sonnet).
+          5. PRESENT: Show final results to the user with a clear summary.
+
+          Always prefer dispatching to "build" first (cheap/fast). Only use "claude-build"
+          when DeepSeek clearly cannot complete the task.
+        '';
+      };
+      build = {
+        model = "deepseek/deepseek-v4-pro";
+        mode = "subagent";
+        hidden = true;
+        description = "Implementation subagent on DeepSeek V4";
+        prompt = ''
+          You are an implementation agent. Follow the plan you are given exactly.
+          - Complete the task to the best of your ability.
+          - If you encounter a problem you cannot solve after reasonable attempts,
+            emit [ESCALATE: <brief reason>] and return control to the orchestrator.
+          - Mark your work as complete explicitly.
+          - Do not over-explain -- the orchestrator will review and present results.
+        '';
+        permission = { task = "allow"; };
+      };
+      "claude-build" = {
+        model = "anthropic/claude-sonnet-4-5";
+        mode = "subagent";
+        hidden = true;
+        description = "Escalation subagent: takes over when DeepSeek fails";
+        prompt = ''
+          You are an escalation implementation agent. You are invoked when the primary
+          implementation agent (DeepSeek) was unable to complete a task.
+          - Pick up where the previous agent left off.
+          - You may dispatch parallel subtasks to "build" agents for efficiency.
+          - Complete the task thoroughly and return results to the orchestrator.
+        '';
+        permission = { task = "allow"; };
+      };
+    };
+  });
+
   writeOpencodeConfig = pkgs.writeShellScript "write-opencode-config" ''
     set -eu
 
     configFile="$HOME/.config/opencode/opencode.json"
     mkdir -p "$(dirname "$configFile")"
 
-    ${lib.getExe pkgs.jq} -n \
-      --arg obsidian_token "$(cat ${config.sops.secrets."obsidian-mcp-token".path})" \
-      '{
-        "$schema": "https://opencode.ai/config.json",
-        "plugin": [
-          "@ex-machina/opencode-anthropic-auth@1.8.0",
-          "superpowers@git+https://github.com/obra/superpowers.git",
-          "opencode-websearch"
-        ],
-        "mcp": {
-          "obsidian": {
-            "enabled": true,
-            "type": "remote",
-            "url": "https://127.0.0.1:27124/mcp/",
-            "headers": {
-              "Authorization": ("Bearer " + $obsidian_token)
-            }
-          }
-        }
-      }' \
+    token=$(cat ${config.sops.secrets."obsidian-mcp-token".path})
+
+    ${lib.getExe pkgs.jq} \
+      --slurpfile base ${openCodeConfigJson} \
+      --arg obsidian_token "$token" \
+      '$base[0] |
+       .mcp.obsidian = {
+         enabled: true,
+         type: "remote",
+         url: "https://127.0.0.1:27124/mcp/",
+         headers: {Authorization: ("Bearer " + $obsidian_token)}
+       }' \
       > "$configFile.tmp"
 
     mv "$configFile.tmp" "$configFile"
@@ -91,6 +155,7 @@ in
   sops.secrets."opencode-go".sopsFile = ../../secrets/opencode.yaml;
   sops.secrets.neuralwatt.sopsFile = ../../secrets/opencode.yaml;
   sops.secrets."obsidian-mcp-token".sopsFile = ../../secrets/opencode.yaml;
+  sops.secrets.deepseek.sopsFile = ../../secrets/opencode.yaml;
 
   systemd.user.services.opencode-auth = {
     Unit = {
