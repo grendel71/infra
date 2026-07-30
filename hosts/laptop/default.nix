@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
     ../../modules/system
     ../../configuration.nix
+    ./autofs.nix
     ./powermgmt.nix
     ../pc/nvidia.nix
     ../pc/nvidia-prime.nix
