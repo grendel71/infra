@@ -13,7 +13,7 @@ in
     ./modules
     inputs.sops-nix.homeManagerModules.sops
     inputs.noctalia.homeModules.default
-    #inputs.zen-browser.packages
+    #inputs.helium-browser.packages
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -50,7 +50,6 @@ in
     #   echo "Hello, ${config.home.username}!"
     # '')
     #
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     pkgs.claude-code
   ];
 
@@ -177,6 +176,17 @@ in
         description = "Decrypt encrypted bitwarden .json file from backup system";
         body = "nix-shell -p \"python3.withPackages(ps: [ps.click])\" -p openssl --run \"python ${scripts}/bw-decrypt.py $argv\"";
       };
+      y = {
+        description = "Launch yazi and cd into its last directory on exit";
+        body = ''
+          set tmp (mktemp -t "yazi-cwd.XXXXXX")
+          command yazi $argv --cwd-file="$tmp"
+          if read -z cwd < "$tmp"; and [ "$cwd" != "$PWD" ]; and test -d "$cwd"
+            builtin cd -- "$cwd"
+          end
+          command rm -f -- "$tmp"
+        '';
+      };
     };
   };
   programs.bash = {
@@ -267,7 +277,7 @@ in
     defaultApplications = {
       "application/gzip" = "com.github.xournalpp.xournalpp.desktop";
       "application/pdf" = [
-        "firefox.desktop"
+        "sioyek.desktop"
       ];
       "application/x-matroska" = "mpv.desktop";
       "audio/aac" = "mpv.desktop";
@@ -349,11 +359,11 @@ in
 
       "x-scheme-handler/mailto" = "userapp-Thunderbird-I99ND3.desktop";
       "x-scheme-handler/mid" = "userapp-Thunderbird-I99ND3.desktop";
-      "text/html" = "firefox.desktop"; # Or 'chromium.desktop', 'qutebrowser.desktop' etc.
-      "x-scheme-handler/http" = "firefox.desktop";
-      "x-scheme-handler/https" = "firefox.desktop";
-      "x-scheme-handler/about" = "firefox.desktop";
-      "x-scheme-handler/unknown" = "firefox.desktop";
+      "text/html" = "helium.desktop"; # Or 'chromium.desktop', 'qutebrowser.desktop' etc.
+      "x-scheme-handler/http" = "helium.desktop";
+      "x-scheme-handler/https" = "helium.desktop";
+      "x-scheme-handler/about" = "helium.desktop";
+      "x-scheme-handler/unknown" = "helium.desktop";
     };
   };
   sops = {

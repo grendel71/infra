@@ -31,11 +31,6 @@
     # of just the bare essentials.
     powerManagement.enable = false;
 
-    prime.sync.enable = true;
-
-    prime.nvidiaBusId = "PCI:22:00:0";
-    prime.intelBusId = "PCI:0:2:0";
-
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
     powerManagement.finegrained = false;

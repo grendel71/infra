@@ -13,6 +13,7 @@
     ./powermgmt.nix
     ../pc/nvidia.nix
     ../pc/nvidia-prime.nix
+    ../../modules/system/qemu
   ];
 
   networking.hostName = "blau-laptop"; # Define your hostname.

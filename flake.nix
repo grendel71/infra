@@ -20,7 +20,7 @@
     claude-code.url = "github:sadjow/claude-code-nix";
 
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     quickshell = {
@@ -32,11 +32,14 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    iloader.url = "github:nab138/iloader";
-
+    helium = {
+      url = "github:tomsch/helium-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
+    pluely.url = "path:/home/blau/pluely";
 
   };
   outputs =
@@ -50,6 +53,9 @@
       zen-browser,
       disko,
       nixos-facter-modules,
+      helium,
+      pluely,
+      noctalia,
       ...
     }@inputs:
     let

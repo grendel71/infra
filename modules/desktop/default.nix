@@ -9,5 +9,6 @@
     ./opencode.nix
     ./fuzzel.nix
     ./noctalia.nix
+    ./chromium.nix
   ];
 }

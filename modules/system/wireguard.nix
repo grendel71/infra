@@ -5,5 +5,5 @@
     wireguard-tools
   ];
 
-  networking.wg-quick.interfaces.wg0.configFile = "/home/blau/dotfiles/wg/wg.conf";
+  networking.wg-quick.interfaces.wg0.configFile = "/home/blau/Stevens/SSMIF/wg/client-wg0.yaml";
 }

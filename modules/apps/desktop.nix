@@ -11,7 +11,6 @@
     vesktop
     #shotwell
     screenfetch
-    firefox
     htop
     jetbrains.idea
     #fuzzel
@@ -20,7 +19,10 @@
     waybar
     thunderbird
     libreoffice-qt
-    #bitwarden-desktop
+    inputs.pluely.packages.${pkgs.system}.cheating-daddy
+    element-desktop
+    #
+    # bitwarden-desktop
     mpv
     nomacs
     keepassxc
@@ -35,10 +37,9 @@
     #gimp
     kitty
     pavucontrol
-    google-chrome
-    #moonlight-qt
+    moonlight-qt
     calibre
-
+    openshot-qt
     ##fonts
     octave
 
@@ -50,7 +51,7 @@
     handbrake
     #mail
     #neomutt
-
+    #librewolf-bin-unwrapped
     gimp
     # education
     # rstudio
@@ -58,7 +59,7 @@
     #zed-editor
     sioyek
 
-    inputs.iloader.packages.${pkgs.stdenv.hostPlatform.system}.default
+    unstable.iloader
 
     protonup-qt
   ];

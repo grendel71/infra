@@ -8,12 +8,13 @@
     ./java.nix
     ./aws.nix
     ./neovim.nix
+    ./yazi.nix
   ];
 
   home.packages = with pkgs; [
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
-
+    unstable.fetch
     screenfetch
     nnn # terminal file manager
     htop
@@ -22,7 +23,7 @@
     xz
     unzip
     p7zip
-
+    smartmontools
     # utils
     ripgrep # recursively searches directories for a regex pattern
     jq # A lightweight and flexible command-line JSON processor
@@ -84,7 +85,6 @@
     neomutt
     talosctl
     kubectl
-    mc
 
   ];
 }

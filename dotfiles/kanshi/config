@@ -32,7 +32,7 @@ output "Sceptre Tech Inc Sceptre F27 0x01010101" {
 
 profile home_1 {
   output $HOME_1 enable
-  output "AU Optronics 0x3CAD Unknown" disable
+  output "AU Optronics 0x3CAD Unknown" enable scale 1.5
 }
 
 profile mobile_laptop {
@@ -44,12 +44,12 @@ profile desktop {
     output $DESKTOP_ALTSCREEN enable
 }
 profile home_2 {
-	output $LAPTOP_SCREEN disable
+	output $LAPTOP_SCREEN enable
 	output $DESKTOP_ALTSCREEN enable
 }
 
 profile home_3 {
-    output $LAPTOP_SCREEN 1920x1200 position -1920,0 disable
+    output $LAPTOP_SCREEN 1920x1200 position 0,0 disable
     output $DESKTOP_MAIN 1920x1080 position 0,0 enable
     output $DESKTOP_ALTSCREEN 1920x1080 position 1920,0 enable
 }
