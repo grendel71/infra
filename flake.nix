@@ -32,6 +32,7 @@
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    iloader.url = "github:nab138/iloader";
     helium = {
       url = "github:tomsch/helium-nix";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -59,7 +59,7 @@
     #zed-editor
     sioyek
 
-    unstable.iloader
+    inputs.iloader.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     protonup-qt
   ];
