@@ -59,8 +59,6 @@
     #zed-editor
     sioyek
 
-    inputs.iloader.packages.${pkgs.stdenv.hostPlatform.system}.default
-
     protonup-qt
   ];
 }
