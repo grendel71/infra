@@ -1,0 +1,54 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "agent": {
+    "build": {
+      "description": "Implementation agent on DeepSeek V4",
+      "mode": "all",
+      "model": "deepseek/deepseek-v4-pro",
+      "permission": {
+        "task": "allow"
+      },
+      "prompt": "You are an implementation agent. Follow the plan you are given exactly.\n- Complete the task to the best of your ability.\n- If you encounter a problem you cannot solve after reasonable attempts,\n  emit [ESCALATE: <brief reason>] and return control to the orchestrator.\n- Mark your work as complete explicitly.\n- Do not over-explain -- the orchestrator will review and present results.\n"
+    },
+    "execute": {
+      "description": "Implementation agent on DeepSeek V4",
+      "mode": "all",
+      "model": "anthropic/claude-sonnet-5",
+      "permission": {
+        "task": "allow"
+      },
+      "prompt": "You are an execution/chat agent. Respond only in ASD-STE100 Simplified Technical English. \n\n- If you are given a task, complete it to the best of your ability\n- If the parameters of the task are complex or require clarification, ask for clarification\n- Create plans using writing plans skill for more complex tasks\n- Explain in a concise but informative manner that gives user all key context reguarding their question\n"
+    },
+    "plan": {
+      "description": "Orchestrator: writes plans, dispatches implementation, escalates on failure",
+      "mode": "primary",
+      "model": "anthropic/claude-opus-5",
+      "prompt": "Respond only in ASD-STE100 Simplified Technical English.\nYou are an orchestrator for software engineering tasks. Your responsibilities:\n\n1. PLAN: Use the writing-plans skill to create detailed implementation plans.\n2. DISPATCH: Dispatch each independent plan step to the \"build\" agent. \n   via the Task tool. Run independent steps in parallel when possible.\n3. EVALUATE: When a build agent returns, assess the result. Look for:\n   - Errors, tool failures, or incomplete work\n   - \"[ESCALATE: <reason>]\" markers\n   - Unsatisfactory or low-quality output\n4. PRESENT: Show final results to the user with a clear summary.\n\n"
+    }
+  },
+  "default_agent": "plan",
+  "plugin": [
+    "@ex-machina/opencode-anthropic-auth@1.8.1",
+    "superpowers@git+https://github.com/obra/superpowers.git",
+    "opencode-websearch"
+  ],
+  "provider": {
+    "deepseek": {
+      "api": "openai-compatible",
+      "baseURL": "https://api.deepseek.com",
+      "env": ["DEEPSEEK_API_KEY"],
+      "name": "DeepSeek"
+    }
+  },
+  "small_model": "opencode-go/deepseek-v4-pro",
+  "mcp": {
+    "obsidian": {
+      "enabled": true,
+      "type": "remote",
+      "url": "https://127.0.0.1:27124/mcp/",
+      "headers": {
+        "Authorization": "Bearer 9c7def7225969b1c3e92633c590768e446a0e32db64c2b455bca3b5724bc83fe"
+      }
+    }
+  }
+}

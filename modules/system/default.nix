@@ -7,5 +7,6 @@
     ./networking.nix
     ./compiler.nix
     ./wireguard.nix
+    ./postgres.nix
   ];
 }

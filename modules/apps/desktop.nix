@@ -7,7 +7,6 @@
 
 {
   home.packages = with pkgs; [
-    #discord
     vesktop
     #shotwell
     screenfetch
@@ -40,6 +39,7 @@
     moonlight-qt
     calibre
     openshot-qt
+    ffmpeg
     ##fonts
     octave
 

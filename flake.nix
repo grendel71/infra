@@ -28,19 +28,13 @@
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    helium = {
-      url = "github:tomsch/helium-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
     pluely.url = "path:/home/blau/pluely";
-
+    globalprotect-openconnect.url = "github:yuezk/GlobalProtect-openconnect";
+    krew2nix.url = "github:eigengrau/krew2nix";
+    krew2nix.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs =
     {
@@ -56,6 +50,8 @@
       helium,
       pluely,
       noctalia,
+      globalprotect-openconnect,
+      krew2nix,
       ...
     }@inputs:
     let
@@ -64,6 +60,7 @@
         inputs.home-manager.nixosModules.default
         sops-nix.nixosModules.sops
 
+        inputs.globalprotect-openconnect.nixosModules.default
         {
           nixpkgs.config.allowUnfree = true;
           nixpkgs.overlays = [

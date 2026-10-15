@@ -39,7 +39,19 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.networkmanager.plugins = with pkgs; [
+    networkmanager-openconnect
+];
+  networking.extraHosts = ''
+    192.168.122.223 vm.local
+    10.246.103.142 hfc1.ssmif
+    155.246.103.56 hfc2.ssmif
+    3.226.241.166 aws.ssmif
+    10.246.103.59 hfc3.ssmif
+    136.108.173.196 vm.cloud
+  '';
   programs.nm-applet.enable = true;
+  programs.globalprotect-openconnect.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -191,4 +203,7 @@
 
   services.blueman.enable = true;
 
+  # EDitor
+  environment.variables.EDITOR = "nvim";
+  environment.variables.VISUAL = "nvim";
 }

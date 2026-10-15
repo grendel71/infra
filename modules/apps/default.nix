@@ -9,6 +9,9 @@
     ./aws.nix
     ./neovim.nix
     ./yazi.nix
+    ./tmux.nix
+    ./matcha.nix
+    ./logisim.nix
   ];
 
   home.packages = with pkgs; [
@@ -51,7 +54,7 @@
     gawk
     zstd
     gnupg
-    tmux
+    #tmux
     # nix related
     #
     # it provides the command `nom` works just like `nix`
@@ -84,7 +87,6 @@
     ripgrep
     neomutt
     talosctl
-    kubectl
 
   ];
 }

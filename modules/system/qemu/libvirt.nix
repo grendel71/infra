@@ -4,6 +4,10 @@
   programs.virt-manager.enable = true;
   users.groups.libvirtd.members = ["blau"];
 
+  environment.systemPackages = with pkgs; [
+
+    virtiofsd
+  ];
   virtualisation.spiceUSBRedirection.enable = true;
 
   virtualisation.libvirtd = {

@@ -1,0 +1,9 @@
+{ config, pkgs, ... }:
+{
+  home.packages = with pkgs; [
+    tmux
+  ];
+
+  home.file.".config/tmux/tmux.conf".source =
+    config.lib.file.mkOutOfStoreSymlink "/home/blau/infra/dotfiles/tmux/tmux.conf";
+}

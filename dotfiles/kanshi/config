@@ -31,8 +31,8 @@ output "Sceptre Tech Inc Sceptre F27 0x01010101" {
 
 
 profile home_1 {
-  output $HOME_1 enable
-  output "AU Optronics 0x3CAD Unknown" enable scale 1.5
+  output $HOME_1 enable position 0,0
+  output "AU Optronics 0x3CAD Unknown" enable scale 1.2 position 1920,0
 }
 
 profile mobile_laptop {
