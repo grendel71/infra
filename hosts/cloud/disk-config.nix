@@ -1,4 +1,4 @@
-# Example to create a bios compatible gpt partition
+# UEFI-only gpt partition layout (Proxmox OVMF)
 { lib, ... }:
 {
   disko.devices = {
@@ -8,11 +8,6 @@
       content = {
         type = "gpt";
         partitions = {
-          boot = {
-            name = "boot";
-            size = "1M";
-            type = "EF02";
-          };
           esp = {
             name = "ESP";
             size = "500M";

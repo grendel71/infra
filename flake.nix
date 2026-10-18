@@ -31,7 +31,6 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
     nixos-facter-modules.url = "github:numtide/nixos-facter-modules";
-    pluely.url = "path:/home/blau/pluely";
     globalprotect-openconnect.url = "github:yuezk/GlobalProtect-openconnect";
     krew2nix.url = "github:eigengrau/krew2nix";
     krew2nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -44,11 +43,8 @@
       determinate,
       claude-code,
       nixpkgs-unstable,
-      zen-browser,
       disko,
       nixos-facter-modules,
-      helium,
-      pluely,
       noctalia,
       globalprotect-openconnect,
       krew2nix,
@@ -96,11 +92,11 @@
           inherit inputs;
         };
       };
-      nixosConfigurations.blau-tlaptop = inputs.nixpkgs.lib.nixosSystem {
+      nixosConfigurations.blau-cloud = inputs.nixpkgs.lib.nixosSystem {
         inherit system;
         modules = sharedModules ++ [
           disko.nixosModules.disko
-          ./hosts/tlaptop
+          ./hosts/cloud
         ];
         specialArgs = {
           inherit inputs;

@@ -264,26 +264,6 @@
         "type": "github"
       }
     },
-    "helium": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1788023475,
-        "narHash": "sha256-e348OL2aoL2P9gT6lFHckwVgs+YxrppRWopPKaakTaw=",
-        "owner": "tomsch",
-        "repo": "helium-nix",
-        "rev": "eee2a5bb95d791ec794edb4f5fcf055bf19b53a5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tomsch",
-        "repo": "helium-nix",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -524,22 +504,6 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1785542685,
-        "narHash": "sha256-sjfvXMbG5pCFgpvw2OZAFcZiTvrppCWvnB6cuGrSY08=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "f8e81fc7eb063db454f563cdd596fb96a5ad1497",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_7": {
-      "locked": {
         "lastModified": 1761880412,
         "narHash": "sha256-QoJjGd4NstnyOG4mm4KXF+weBzA2AH/7gn1Pmpfcb0A=",
         "owner": "nixos",
@@ -574,26 +538,11 @@
         "type": "github"
       }
     },
-    "pluely": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_6"
-      },
-      "locked": {
-        "lastModified": 1785950290,
-        "narHash": "sha256-f/wWAKwZgUuQZ8rd46iWLtcrFsRZqFq2OXlEO2E6IyM=",
-        "path": "/home/blau/pluely",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/blau/pluely",
-        "type": "path"
-      }
-    },
     "polymc": {
       "inputs": {
         "flake-compat": "flake-compat_2",
         "libnbtplusplus": "libnbtplusplus",
-        "nixpkgs": "nixpkgs_7",
+        "nixpkgs": "nixpkgs_6",
         "tomlplusplus": "tomlplusplus"
       },
       "locked": {
@@ -637,18 +586,15 @@
         "disko": "disko",
         "dotfiles": "dotfiles",
         "globalprotect-openconnect": "globalprotect-openconnect",
-        "helium": "helium",
         "home-manager": "home-manager",
         "krew2nix": "krew2nix",
         "nixos-facter-modules": "nixos-facter-modules",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "noctalia": "noctalia",
-        "pluely": "pluely",
         "polymc": "polymc",
         "quickshell": "quickshell",
-        "sops-nix": "sops-nix",
-        "zen-browser": "zen-browser"
+        "sops-nix": "sops-nix"
       }
     },
     "rust-analyzer-src": {
@@ -752,26 +698,6 @@
       "original": {
         "owner": "marzer",
         "repo": "tomlplusplus",
-        "type": "github"
-      }
-    },
-    "zen-browser": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1788083005,
-        "narHash": "sha256-e6U3sXUlu/QzZyJp/+ymW8s57Jbdb7bwT9+WaTAhHfQ=",
-        "owner": "youwen5",
-        "repo": "zen-browser-flake",
-        "rev": "afbbbef7c3c00f160f4a9dfdd8c6c6b8b089a33f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "youwen5",
-        "repo": "zen-browser-flake",
         "type": "github"
       }
     }

@@ -186,6 +186,10 @@ in
           command rm -f -- "$tmp"
         '';
       };
+      oc = {
+        description = "launch opencode";
+        body = "opencode";
+      };
       stconnect = {
         description = "connect to openconnect / stevens";
         body = "sh ${scripts}/stconnect.sh";

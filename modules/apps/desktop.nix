@@ -18,7 +18,7 @@
     waybar
     thunderbird
     libreoffice-qt
-    inputs.pluely.packages.${pkgs.system}.cheating-daddy
+    #inputs.pluely.packages.${pkgs.system}.cheating-daddy
     element-desktop
     #
     # bitwarden-desktop
