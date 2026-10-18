@@ -49,6 +49,7 @@
     3.226.241.166 aws.ssmif
     10.246.103.59 hfc3.ssmif
     136.108.173.196 vm.cloud
+    192.168.1.249 work.cloud
   '';
   programs.nm-applet.enable = true;
   programs.globalprotect-openconnect.enable = true;
