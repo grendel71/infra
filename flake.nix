@@ -34,6 +34,10 @@
     globalprotect-openconnect.url = "github:yuezk/GlobalProtect-openconnect";
     krew2nix.url = "github:eigengrau/krew2nix";
     krew2nix.inputs.nixpkgs.follows = "nixpkgs";
+    pi = {
+      url = "github:earendil-works/pi/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -48,6 +52,7 @@
       noctalia,
       globalprotect-openconnect,
       krew2nix,
+      pi,
       ...
     }@inputs:
     let

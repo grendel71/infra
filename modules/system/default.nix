@@ -6,7 +6,7 @@
     ./sops.nix
     ./networking.nix
     ./compiler.nix
-    ./wireguard.nix
+    #    ./wireguard.nix
     ./postgres.nix
   ];
 }
